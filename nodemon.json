@@ -1,0 +1,9 @@
+{
+  "watch": ["server.cjs", ".env", ".env.local", "env.local"],
+  "ext": "js,json,env,cjs",
+  "ignore": ["node_modules/", "src/", "public/", "*.test.js"],
+  "env": {
+    "NODE_ENV": "development"
+  },
+  "delay": "1000"
+}
