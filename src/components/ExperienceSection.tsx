@@ -1,11 +1,19 @@
 import { useEffect, useRef, useState } from 'react';
 import { Calendar, MapPin } from 'lucide-react';
+import { Button } from './ui/button';
 
 const ExperienceSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
   const education = [
+    {
+      degree: "INTERMEDIATE IN (ICS)",
+      school: "SKILLS GROUP OF COLLEGE",
+      period: "Sep 2013 - Aug 2015",
+      description: "Focused study of computer science basics including programming, logic building, and web fundamentals. Completed several academic projects and gained strong analytical and problem-solving skills that built a solid foundation for higher studies in computer science."
+    }
+,    
     {
       degree: "BACHELOR'S DEGREE IN COMPUTER SCIENCE",
       school: "UMT - University of Management and Technology",
@@ -16,18 +24,49 @@ const ExperienceSection = () => {
 
   const experience = [
     {
-      position: "FULL STACK LEAD DEVELOPER",
-      company: "Mico Data Tech (MDT)",
-      period: "Sep 2020 - Dec 2023",
-      description: "Led development team in creating scalable web applications using modern technologies. Managed full-stack development projects, mentored junior developers, and implemented best practices for code quality and deployment automation."
+      position: "FULL STACK LEAD ENGINEER",
+      company: "Cognita-Innovative Solutions",
+      period: "Jan 2024 - Present",
+      description:
+        "Overseeing the development of enterprise-grade web applications using Next.js, Laravel, and AWS. Responsible for technical architecture, mentoring engineers, and driving innovation across product development."
     },
     {
-      position: "FULL STACK DEVELOPER",
-      company: "QMMC",
-      period: "May 2021 - April 2023",
-      description: "Developed scalable applications using MEAN stack (MongoDB, Express.js, Angular, Node.js) with clean architecture. Built real-time dashboards using WebSockets and integrated external services (Google Maps, Twilio, Stripe, PayPal). Managed Git workflows and deployed SaaS applications on AWS/Vercel/DigitalOcean using Docker with CI/CD pipelines via GitHub Actions and Jenkins."
+      position: "TECHNICAL TEAM LEAD",
+      company: "Jan's Group",
+      period: "Jan 2022 - Dec 2023",
+      description:
+        "Managed a team of engineers building SaaS-based business solutions. Implemented modern DevOps practices, improved system scalability, and guided developers on clean architecture and testing strategies."
+    },
+    {
+      position: "SENIOR FULL STACK ENGINEER",
+      company: "MDTS",
+      period: "Aug 2020 - Dec 2021",
+      description:
+        "Led the design and development of multi-tenant platforms. Worked on real-time dashboards, authentication flows, and database optimization, ensuring seamless integration between frontend and backend systems."
+    },
+    {
+      position: "SOFTWARE ENGINEER (FULL STACK)",
+      company: "Dg Optimizer",
+      period: "Apr 2019 - Jul 2020",
+      description:
+        "Developed performance-driven web applications using React and Laravel. Focused on optimizing APIs, improving frontend responsiveness, and collaborating closely with the design team for better user experience."
+    },
+    {
+      position: "JUNIOR FULL STACK DEVELOPER",
+      company: "Elefta Inc",
+      period: "Jan 2017 - Mar 2019",
+      description:
+        "Built and maintained internal tools and APIs using JavaScript, Node.js, and MySQL. Assisted senior developers in creating scalable architectures and learned deployment automation and version control best practices."
     }
+    
+   
+   
+   
   ];
+  
+
+  const [showAllExperience, setShowAllExperience] = useState(false);
+  const visibleExperiences = showAllExperience ? experience : experience.slice(0, 2);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -104,7 +143,7 @@ const ExperienceSection = () => {
             </h3>
             
             <div className="space-y-6">
-              {experience.map((exp, index) => (
+              {visibleExperiences.map((exp, index) => (
                 <div
                   key={index}
                   className={`bg-navy rounded-xl p-4 space-y-3 hover-scale fade-in-up ${isVisible ? 'visible' : ''} shadow-lg hover:shadow-xl transition-all duration-300`}
@@ -131,6 +170,19 @@ const ExperienceSection = () => {
                   </p>
                 </div>
               ))}
+              {experience.length > 2 && (
+                <div className="pt-2 flex justify-center">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    aria-expanded={showAllExperience}
+                    aria-controls="experience-list"
+                    onClick={() => setShowAllExperience((prev) => !prev)}
+                  >
+                    {showAllExperience ? 'See less' : 'See more'}
+                  </Button>
+                </div>
+              )}
             </div>
           </div>
         </div>

@@ -31,51 +31,62 @@ const AboutSection = () => {
   }, []);
 
   return (
-    <section id="about" ref={sectionRef} className="py-16 dark-section">
-      <div className="max-w-7xl mx-auto px-8 sm:px-12 lg:px-16">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Content */}
-          <div className={`space-y-6 fade-in-up ${isVisible ? 'visible' : ''}`}>
-            <div className="flex items-center space-x-3 mb-6">
-              <div className="w-6 h-6 hexagon bg-golden animate-scale-in"></div>
-              <h2 className="text-lg font-bold text-golden">About me</h2>
+    <section id="about" ref={sectionRef} className="py-20 dark-section relative overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-20 left-10 w-32 h-32 hexagon border border-golden/20"></div>
+        <div className="absolute bottom-20 right-10 w-24 h-24 hexagon border border-golden/20"></div>
+        <div className="absolute top-1/2 left-1/4 w-16 h-16 hexagon border border-golden/20"></div>
+      </div>
+      
+      <div className="max-w-7xl mx-auto px-8 sm:px-12 lg:px-16 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-16 items-start">
+          {/* Left Content - About */}
+          <div className={`space-y-8 fade-in-up ${isVisible ? 'visible' : ''}`}>
+            <div className="flex items-center space-x-4 mb-8">
+              <div className="w-8 h-8 hexagon bg-gradient-to-br from-golden to-golden-dark animate-scale-in shadow-lg"></div>
+              <h2 className="text-xl font-bold text-golden tracking-wide">About me</h2>
             </div>
 
-            <div className="space-y-4">
-              <h3 className="text-2xl lg:text-3xl font-black text-golden leading-tight">
-                MY PASSION IS <span className="text-golden-dark">DESIGNING & DEVELOPING</span>
+            <div className="space-y-6">
+              <h3 className="text-3xl lg:text-4xl xl:text-5xl font-black text-golden leading-tight">
+                MY PASSION IS <span className="bg-gradient-to-r from-golden to-golden-light bg-clip-text text-transparent">DESIGNING & DEVELOPING</span>
                 <br />
                 THE MEMORABLE WEBSITES THAT CONNECT
                 <br />
                 AND CONVERT
               </h3>
 
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                Hi, I'm Numan Akram - a passionate Full Stack Developer with 8+ years of experience in creating innovative digital solutions. I specialize in building scalable web applications using modern technologies like React, Node.js, and Python. My expertise extends to DevOps practices, cloud deployment, and cutting-edge AI/ML integration. I believe in crafting not just functional websites, but memorable digital experiences that drive real business results and create lasting connections with users.
-              </p>
+              {/* Paragraphs moved below the grid for full-width layout */}
             </div>
           </div>
 
-          {/* Right Content - Skills */}
-          <div className={`space-y-6 fade-in-up ${isVisible ? 'visible' : ''}`} style={{animationDelay: '0.3s'}}>
+          {/* Right Content - Enhanced Skills */}
+          <div className={`space-y-8 fade-in-up ${isVisible ? 'visible' : ''}`} style={{animationDelay: '0.3s'}}>
+            <div className="text-center mb-8">
+              <h3 className="text-2xl font-bold text-golden mb-2">Technical Skills</h3>
+              <div className="w-16 h-1 bg-gradient-to-r from-golden to-golden-dark mx-auto rounded-full"></div>
+            </div>
+
             {skills.map((skill, index) => (
-              <div key={skill.name} className={`space-y-2 hover-scale fade-in-up ${isVisible ? 'visible' : ''}`} style={{animationDelay: `${index * 0.1}s`}}>
+              <div key={skill.name} className={`group space-y-3 hover-scale fade-in-up ${isVisible ? 'visible' : ''} p-4 rounded-xl hover:bg-golden/5 transition-all duration-300`} style={{animationDelay: `${index * 0.1}s`}}>
                 <div className="flex justify-between items-center">
-                  <span className="text-golden font-semibold text-xs tracking-wider">
+                  <span className="text-golden font-semibold text-sm tracking-wider group-hover:text-golden-light transition-colors">
                     {skill.name}
                   </span>
-                  <span className="text-golden font-bold text-sm">
+                  <span className="text-golden font-bold text-base group-hover:scale-110 transition-transform duration-300">
                     {skill.level}%
                   </span>
                 </div>
-                
-                <div className="h-1.5 bg-navy-light rounded-full overflow-hidden">
+
+                <div className="h-2 bg-navy-light rounded-full overflow-hidden shadow-inner">
                   <div
-                    className={`h-full bg-gradient-to-r from-golden to-golden-dark progress-bar ${
+                    className={`h-full bg-gradient-to-r from-golden via-golden-light to-golden-dark progress-bar shadow-lg ${
                       animateSkills ? 'animate' : ''
                     }`}
                     style={{
-                      animationDelay: `${index * 0.2}s`
+                      animationDelay: `${index * 0.2}s`,
+                      width: `${skill.level}%`
                     }}
                   />
                 </div>
@@ -83,7 +94,36 @@ const AboutSection = () => {
             ))}
           </div>
         </div>
+
+        {/* Full-width description block below the grid */}
+        <div className={`mt-12 fade-in-up ${isVisible ? 'visible' : ''}`}>
+          <div className='w-full space-y-4'>
+            <p className="text-base text-golden/80 leading-relaxed">
+              Hi, I'm <span className="font-semibold text-golden">Numan Akram</span> - a Senior Full Stack Developer with 8+ years of experience, known for building scalable, user-centric web and cloud solutions.
+            </p>
+            <p className="text-base text-golden/80 leading-relaxed">
+              Skilled in Nuxt.js, React.js, Angular, Vue.js, Node.js, Nest.js, Laravel, and PHP. Highly proficient in front-end development using JavaScript, TypeScript, Tailwind CSS, Bootstrap, and modern UI/UX design principles.
+            </p>
+            <p className="text-base text-golden/80 leading-relaxed">
+              Expert in the MERN stack (MongoDB, Express.js, React.js, Node.js), RESTful and GraphQL APIs, and working with databases like MongoDB, PostgreSQL, MySQL, and Microsoft SQL Server.
+            </p>
+            <p className="text-base text-golden/80 leading-relaxed">
+              Strong in Python, using Django, Flask, and scripting for automation, data processing, and backend services. Experienced in AI/ML development using Python libraries like TensorFlow, scikit-learn, and Pandas, with a growing focus on Large Language Models (LLMs) and their integration via OpenAI API and LangChain.
+            </p>
+            <p className="text-base text-golden/80 leading-relaxed">
+              Capable of building intelligent applications that utilize natural language processing (NLP), embeddings, vector databases, and prompt engineering.
+            </p>
+            <p className="text-base text-golden/80 leading-relaxed">
+              Well-versed in deploying applications across AWS, Azure, GCP, and Firebase. Skilled in Docker, container orchestration, and CI/CD pipelines using GitHub Actions, GitLab CI/CD, Jenkins, and Azure DevOps. Confident with Git-based workflows (GitHub, Bitbucket, GitLab).
+            </p>
+            <p className="text-base text-golden/80 leading-relaxed">
+              Passionate about creating high-quality software, secure architecture, and keeping up with cutting-edge technologies. Strong communicator and collaborator in cross-functional teams, delivering clean, maintainable, and future-ready code.
+            </p>
+          </div>
+        </div>
       </div>
+
+       
     </section>
   );
 };

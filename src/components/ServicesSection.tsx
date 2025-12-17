@@ -86,7 +86,9 @@ const ServicesSection = () => {
                       {stats[0].number}
                     </span>
                     <span className="text-xs font-bold text-navy text-center leading-tight">
-                      YEARS OF<br/>EXPERIENCE
+                    EXPERIENCE
+                      <br/>
+                      OF  YEARS 
                     </span>
                   </div>
                 </div>

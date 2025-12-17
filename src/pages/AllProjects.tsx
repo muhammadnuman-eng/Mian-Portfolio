@@ -48,9 +48,9 @@ const AllProjects = () => {
           {allProjects.map((project, index) => (
             <div
               key={project.id}
-              className={`group bg-navy rounded-xl overflow-hidden hover:scale-105 hover:-translate-y-2 transition-all duration-500 cursor-pointer fade-in-up ${
+              className={`group bg-navy rounded-2xl overflow-hidden hover:scale-105 hover:-translate-y-3 transition-all duration-700 cursor-pointer fade-in-up ${
                 isVisible ? 'visible' : ''
-              } shadow-lg hover:shadow-xl`}
+              } shadow-xl hover:shadow-2xl border border-golden/10 hover:border-golden/30`}
               style={{ animationDelay: `${index * 0.1}s` }}
               onClick={() => window.open(project.link, '_blank')}
             >
@@ -59,41 +59,40 @@ const AllProjects = () => {
                 <img 
                   src={project.image} 
                   alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-golden/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <ExternalLink className="w-8 h-8 text-golden animate-bounce" />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500">
+                  <div className="bg-golden/90 backdrop-blur-sm rounded-full p-4 transform scale-75 group-hover:scale-100 transition-transform duration-500">
+                    <ExternalLink className="w-6 h-6 text-navy" />
+                  </div>
                 </div>
               </div>
 
               {/* Project Info */}
-              <div className="p-6 space-y-4">
-                <div className="flex items-center justify-between">
-                  <span className="text-golden text-sm font-medium px-3 py-1 bg-golden/10 rounded-full">
-                    {project.category}
-                  </span>
-                </div>
-                
-                <h3 className="text-xl font-bold text-golden group-hover:text-golden-light transition-colors">
+              <div className="p-8 space-y-5">
+                {/* Project Title - Large and Bold */}
+                <h3 className="text-2xl font-bold text-golden group-hover:text-golden-light transition-colors leading-tight">
                   {project.title}
                 </h3>
-                
-                {project.description && (
-                  <p className="text-navy/70 text-sm leading-relaxed">
-                    {project.description}
-                  </p>
-                )}
-                
-                <div className="flex flex-wrap gap-2">
-                  {project.techStack.split(' ').slice(0, 4).map((tech) => (
+
+                {/* Technologies */}
+                <div className="flex flex-wrap items-center gap-2">
+                  {project.techStack.split(' ').map((tech, idx) => (
                     <span
-                      key={tech}
-                      className="px-3 py-1 bg-golden/10 text-golden text-xs rounded-full border border-golden/20 hover:bg-golden/20 transition-colors"
+                      key={idx}
+                      className="px-3 py-1 bg-gray-900/80 border border-golden/50 text-golden text-sm font-medium"
+                      style={{ borderRadius: '10px' }}
                     >
                       {tech}
                     </span>
                   ))}
                 </div>
+
+                {/* Project Description */}
+                <p className="text-golden/80 text-sm leading-relaxed">
+                  {project.description || `A modern project built with cutting-edge technology and industry best practices.`}
+                </p>
               </div>
             </div>
           ))}
