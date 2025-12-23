@@ -75,7 +75,7 @@ const ExperienceSection = () => {
           setIsVisible(true);
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
     );
 
     if (sectionRef.current) {
@@ -86,21 +86,21 @@ const ExperienceSection = () => {
   }, []);
 
   return (
-    <section id="experience" ref={sectionRef} className="py-16 golden-gradient">
+    <section id="experience" ref={sectionRef} className="py-16 bg-background">
       <div className="max-w-7xl mx-auto px-8 sm:px-12 lg:px-16">
         {/* Header */}
         <div className={`mb-12 fade-in-up ${isVisible ? 'visible' : ''}`}>
           <div className="flex items-center space-x-3 mb-6">
-            <div className="w-6 h-6 hexagon bg-navy animate-scale-in"></div>
-            <h2 className="text-lg font-bold text-navy">Education & Experience</h2>
+            <div className="w-6 h-6 hexagon bg-teal animate-scale-in"></div>
+            <h2 className="text-lg font-bold text-foreground">Education & Experience</h2>
           </div>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8">
           {/* Education */}
           <div className={`fade-in-up ${isVisible ? 'visible' : ''}`}>
-            <h3 className="text-lg font-bold text-navy mb-6 flex items-center">
-              <div className="w-4 h-4 hexagon bg-navy mr-2"></div>
+            <h3 className="text-lg font-bold text-foreground mb-6 flex items-center">
+              <div className="w-4 h-4 hexagon bg-teal mr-2"></div>
               EDUCATION
             </h3>
             
@@ -108,26 +108,26 @@ const ExperienceSection = () => {
               {education.map((edu, index) => (
                 <div
                   key={index}
-                  className={`bg-navy rounded-xl p-4 space-y-3 hover-scale fade-in-up ${isVisible ? 'visible' : ''} shadow-lg hover:shadow-xl transition-all duration-300`}
+                  className={`bg-card rounded-xl p-4 space-y-3 hover-scale fade-in-up ${isVisible ? 'visible' : ''} shadow-lg hover:shadow-xl transition-all duration-300`}
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   <div className="flex items-start justify-between">
                     <div className="space-y-1">
-                      <h4 className="text-sm font-bold text-golden">
+                      <h4 className="text-sm font-bold text-foreground">
                         {edu.degree}
                       </h4>
-                      <div className="flex items-center text-golden/80 text-xs">
+                      <div className="flex items-center text-foreground/70 text-xs">
                         <MapPin className="w-3 h-3 mr-1" />
                         {edu.school}
                       </div>
                     </div>
-                    <div className="flex items-center text-golden/80 text-xs">
+                    <div className="flex items-center text-foreground/70 text-xs">
                       <Calendar className="w-3 h-3 mr-1" />
                       {edu.period}
                     </div>
                   </div>
                   
-                  <p className="text-golden/70 text-xs leading-relaxed">
+                  <p className="text-foreground/70 text-xs leading-relaxed">
                     {edu.description}
                   </p>
                 </div>
@@ -137,8 +137,8 @@ const ExperienceSection = () => {
 
           {/* Experience */}
           <div className={`fade-in-up ${isVisible ? 'visible' : ''}`} style={{animationDelay: '0.2s'}}>
-            <h3 className="text-lg font-bold text-navy mb-6 flex items-center">
-              <div className="w-4 h-4 hexagon bg-navy mr-2"></div>
+            <h3 className="text-lg font-bold text-foreground mb-6 flex items-center">
+              <div className="w-4 h-4 hexagon bg-teal mr-2"></div>
               EXPERIENCE
             </h3>
             
@@ -146,26 +146,26 @@ const ExperienceSection = () => {
               {visibleExperiences.map((exp, index) => (
                 <div
                   key={index}
-                  className={`bg-navy rounded-xl p-4 space-y-3 hover-scale fade-in-up ${isVisible ? 'visible' : ''} shadow-lg hover:shadow-xl transition-all duration-300`}
+                  className={`bg-card rounded-xl p-4 space-y-3 hover-scale fade-in-up ${isVisible ? 'visible' : ''} shadow-lg hover:shadow-xl transition-all duration-300`}
                   style={{ animationDelay: `${(index + 2) * 0.1}s` }}
                 >
                   <div className="flex items-start justify-between">
                     <div className="space-y-1">
-                      <h4 className="text-sm font-bold text-golden">
+                      <h4 className="text-sm font-bold text-foreground">
                         {exp.position}
                       </h4>
-                      <div className="flex items-center text-golden/80 text-xs">
+                      <div className="flex items-center text-foreground/70 text-xs">
                         <MapPin className="w-3 h-3 mr-1" />
                         {exp.company}
                       </div>
                     </div>
-                    <div className="flex items-center text-golden/80 text-xs">
+                    <div className="flex items-center text-foreground/70 text-xs">
                       <Calendar className="w-3 h-3 mr-1" />
                       {exp.period}
                     </div>
                   </div>
                   
-                  <p className="text-golden/70 text-xs leading-relaxed">
+                  <p className="text-foreground/70 text-xs leading-relaxed">
                     {exp.description}
                   </p>
                 </div>
@@ -175,6 +175,7 @@ const ExperienceSection = () => {
                   <Button
                     variant="outline"
                     size="sm"
+                    className="bg-teal text-foreground hover:bg-teal-dark border-teal"
                     aria-expanded={showAllExperience}
                     aria-controls="experience-list"
                     onClick={() => setShowAllExperience((prev) => !prev)}

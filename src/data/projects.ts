@@ -207,6 +207,42 @@ export const allProjects: Project[] = [
     link: "https://www.saksfifthavenue.com/",
     techStack: "React.js Next.js Tailwind CSS TypeScript Node.js Express.js MongoDB",
     description: "Experienced in building dynamic web applications using React.js, Next.js, Tailwind CSS, TypeScript, Node.js, Express.js, MongoDB, and Redis for scalable, high-performance solutions."
+  },
+  {
+    id: 21,
+    title: "The New Yorker",
+    category: "Modern Stack",
+    image: "/images/newyorker.jpeg",
+    link: "https://www.newyorker.com/",
+    techStack: "React.js Next.js TypeScript Node.js Express.js",
+    description: "Premium magazine website featuring elegant editorial design, seamless article reading experience, and sophisticated content management system built with modern web technologies."
+  },
+  {
+    id: 22,
+    title: "A-DAM",
+    category: "E-Commerce",
+    image: "/images/a-dam.jpeg",
+    link: "https://a-dam.com/",
+    techStack: "React.js Next.js TypeScript Tailwind CSS Node.js",
+    description: "Modern e-commerce platform for sustainable fashion brand with elegant product showcases, seamless shopping experience, and integrated payment solutions."
+  },
+  {
+    id: 23,
+    title: "V&A Museum",
+    category: "Modern Stack",
+    image: "/images/vam-museum.jpeg",
+    link: "https://www.vam.ac.uk/",
+    techStack: "React.js Next.js TypeScript Node.js Express.js MongoDB",
+    description: "Cultural institution website featuring immersive digital exhibitions, membership management, and elegant presentation of art collections with modern web technologies."
+  },
+  {
+    id: 24,
+    title: "Target Corporate",
+    category: "Corporate",
+    image: "/images/target-corporate.jpeg",
+    link: "https://corporate.target.com/about",
+    techStack: "React.js Next.js TypeScript Tailwind CSS Node.js",
+    description: "Corporate website showcasing company mission, values, and brand story with engaging visuals, responsive design, and seamless user experience."
   }
   // {
   //   id: 17,

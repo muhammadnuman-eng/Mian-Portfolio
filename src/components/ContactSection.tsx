@@ -27,7 +27,7 @@ const ContactSection = () => {
           setIsVisible(true);
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
     );
 
     if (sectionRef.current) {
@@ -126,12 +126,12 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" ref={sectionRef} className="py-20 dark-section relative overflow-hidden">
+    <section id="contact" ref={sectionRef} className="py-20 bg-background relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-20 right-10 w-32 h-32 hexagon border border-golden/20"></div>
-        <div className="absolute bottom-20 left-10 w-24 h-24 hexagon border border-golden/20"></div>
-        <div className="absolute top-1/2 right-1/4 w-20 h-20 hexagon border border-golden/20"></div>
+        <div className="absolute top-20 right-10 w-32 h-32 hexagon border border-teal/20"></div>
+        <div className="absolute bottom-20 left-10 w-24 h-24 hexagon border border-teal/20"></div>
+        <div className="absolute top-1/2 right-1/4 w-20 h-20 hexagon border border-teal/20"></div>
       </div>
       
       <div className="max-w-7xl mx-auto px-8 sm:px-12 lg:px-16 relative z-10">
@@ -140,27 +140,25 @@ const ContactSection = () => {
           <div className={`space-y-8 fade-in-up ${isVisible ? 'visible' : ''}`}>
             <div className="space-y-6">
               <div className="flex items-center space-x-4 mb-8">
-                <div className="w-8 h-8 hexagon bg-gradient-to-br from-golden to-golden-dark animate-scale-in shadow-lg"></div>
-                <h2 className="text-2xl font-bold text-golden tracking-wide">Get In Touch</h2>
+                <div className="w-8 h-8 hexagon bg-gradient-to-br from-teal to-teal-dark animate-scale-in shadow-lg"></div>
+                <h2 className="text-2xl font-bold text-foreground tracking-wide">Get In Touch</h2>
               </div>
               
               <div className="space-y-4">
-                <h3 className="text-3xl lg:text-4xl font-black text-golden leading-tight">
-                  Let's Create Something
-                  <br />
-                  <span className="text-golden-light">Amazing Together</span>
+                <h3 className="text-3xl lg:text-4xl font-black text-foreground leading-tight whitespace-nowrap">
+                  Let's Create <span className="text-teal">Something Amazing Together</span>
                 </h3>
-                <p className="text-golden/80 text-lg leading-relaxed">
+                <p className="text-foreground/70 text-lg leading-relaxed">
                   Ready to bring your ideas to life? I'd love to hear about your project and discuss how we can work together.
                 </p>
               </div>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-6 bg-navy-light/30 backdrop-blur-sm rounded-2xl p-8 border border-golden/20">
+            <form onSubmit={handleSubmit} className="space-y-6 bg-muted/30 backdrop-blur-sm rounded-2xl p-8 border border-border">
               {/* First Row: First Name + Last Name */}
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label className="block text-golden text-sm font-semibold mb-2">
+                  <label className="block text-foreground text-sm font-semibold mb-2">
                     FIRST NAME*
                   </label>
                   <Input
@@ -168,7 +166,7 @@ const ContactSection = () => {
                     name="firstName"
                     value={formData.firstName}
                     onChange={handleInputChange}
-                    className="bg-navy-light/50 border-golden/30 text-golden placeholder:text-golden/50 focus:border-golden focus:ring-2 focus:ring-golden/20 text-sm h-12 hover:border-golden/50 transition-all duration-300 rounded-xl"
+                    className="bg-muted/50 border-border text-foreground placeholder:text-foreground/50 focus:border-teal focus:ring-2 focus:ring-teal/20 text-sm h-12 hover:border-teal/50 transition-all duration-300 rounded-xl"
                     placeholder="Your first name"
                     required
                     disabled={isLoading}
@@ -176,7 +174,7 @@ const ContactSection = () => {
                 </div>
                 
                 <div className="space-y-2">
-                  <label className="block text-golden text-sm font-semibold mb-2">
+                  <label className="block text-foreground text-sm font-semibold mb-2">
                     LAST NAME*
                   </label>
                   <Input
@@ -184,7 +182,7 @@ const ContactSection = () => {
                     name="lastName"
                     value={formData.lastName}
                     onChange={handleInputChange}
-                    className="bg-navy-light/50 border-golden/30 text-golden placeholder:text-golden/50 focus:border-golden focus:ring-2 focus:ring-golden/20 text-sm h-12 hover:border-golden/50 transition-all duration-300 rounded-xl"
+                    className="bg-muted/50 border-border text-foreground placeholder:text-foreground/50 focus:border-teal focus:ring-2 focus:ring-teal/20 text-sm h-12 hover:border-teal/50 transition-all duration-300 rounded-xl"
                     placeholder="Your last name"
                     required
                     disabled={isLoading}
@@ -195,7 +193,7 @@ const ContactSection = () => {
               {/* Second Row: Phone + Email */}
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label className="block text-golden text-sm font-semibold mb-2">
+                  <label className="block text-foreground text-sm font-semibold mb-2">
                     PHONE*
                   </label>
                   <Input
@@ -203,7 +201,7 @@ const ContactSection = () => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    className="bg-navy-light/50 border-golden/30 text-golden placeholder:text-golden/50 focus:border-golden focus:ring-2 focus:ring-golden/20 text-sm h-12 hover:border-golden/50 transition-all duration-300 rounded-xl"
+                    className="bg-muted/50 border-border text-foreground placeholder:text-foreground/50 focus:border-teal focus:ring-2 focus:ring-teal/20 text-sm h-12 hover:border-teal/50 transition-all duration-300 rounded-xl"
                     placeholder="Your phone number"
                     required
                     disabled={isLoading}
@@ -211,7 +209,7 @@ const ContactSection = () => {
                 </div>
                 
                 <div className="space-y-2">
-                  <label className="block text-golden text-sm font-semibold mb-2">
+                  <label className="block text-foreground text-sm font-semibold mb-2">
                     EMAIL*
                   </label>
                   <Input
@@ -219,7 +217,7 @@ const ContactSection = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    className="bg-navy-light/50 border-golden/30 text-golden placeholder:text-golden/50 focus:border-golden focus:ring-2 focus:ring-golden/20 text-sm h-12 hover:border-golden/50 transition-all duration-300 rounded-xl"
+                    className="bg-muted/50 border-border text-foreground placeholder:text-foreground/50 focus:border-teal focus:ring-2 focus:ring-teal/20 text-sm h-12 hover:border-teal/50 transition-all duration-300 rounded-xl"
                     placeholder="your@email.com"
                     required
                     disabled={isLoading}
@@ -229,7 +227,7 @@ const ContactSection = () => {
 
               {/* Third Row: Subject */}
               <div className="space-y-2">
-                <label className="block text-golden text-sm font-semibold mb-2">
+                <label className="block text-foreground text-sm font-semibold mb-2">
                   SUBJECT (OPTIONAL)
                 </label>
                 <Input
@@ -237,14 +235,14 @@ const ContactSection = () => {
                   name="subject"
                   value={formData.subject}
                   onChange={handleInputChange}
-                  className="bg-navy-light/50 border-golden/30 text-golden placeholder:text-golden/50 focus:border-golden focus:ring-2 focus:ring-golden/20 text-sm h-12 hover:border-golden/50 transition-all duration-300 rounded-xl"
+                  className="bg-dark-gray-dark/50 border-dark-gray-dark/50 text-foreground placeholder:text-foreground/50 focus:border-teal focus:ring-2 focus:ring-teal/20 text-sm h-12 hover:border-teal/50 transition-all duration-300 rounded-xl"
                   placeholder="Project subject"
                   disabled={isLoading}
                 />
               </div>
 
               <div className="space-y-2">
-                <label className="block text-golden text-sm font-semibold mb-2">
+                <label className="block text-foreground text-sm font-semibold mb-2">
                   MESSAGE*
                 </label>
                 <Textarea
@@ -252,7 +250,7 @@ const ContactSection = () => {
                   value={formData.message}
                   onChange={handleInputChange}
                   rows={5}
-                  className="bg-navy-light/50 border-golden/30 text-golden placeholder:text-golden/50 focus:border-golden focus:ring-2 focus:ring-golden/20 resize-none text-sm hover:border-golden/50 transition-all duration-300 rounded-xl"
+                  className="bg-dark-gray-dark/50 border-dark-gray-dark/50 text-foreground placeholder:text-foreground/50 focus:border-teal focus:ring-2 focus:ring-teal/20 resize-none text-sm hover:border-teal/50 transition-all duration-300 rounded-xl"
                   placeholder="Tell me about your project..."
                   required
                   disabled={isLoading}
@@ -262,7 +260,7 @@ const ContactSection = () => {
               <Button
                 type="submit"
                 disabled={isLoading}
-                className="group bg-gradient-to-r from-golden to-golden-dark text-navy hover:from-golden-dark hover:to-golden hover:scale-105 transition-all duration-300 px-8 py-4 text-base font-semibold rounded-full shadow-xl hover:shadow-2xl flex items-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed w-full md:w-auto"
+                className="group bg-teal text-foreground hover:bg-teal-dark hover:scale-105 transition-all duration-300 px-8 py-4 text-base font-semibold rounded-full shadow-xl hover:shadow-2xl flex items-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed w-full md:w-auto"
               >
                 {isLoading ? (
                   <>
@@ -282,25 +280,25 @@ const ContactSection = () => {
           <div className={`space-y-8 fade-in-up lg:self-end ${isVisible ? 'visible' : ''}`} style={{animationDelay: '0.3s'}}>
             {/* Contact Image */}
             <div className="relative group">
-              <div className="aspect-[4/3] bg-gradient-to-br from-navy-light to-navy rounded-2xl overflow-hidden hover:scale-105 transition-transform duration-700 shadow-2xl">
+              <div className="aspect-[4/3] bg-gradient-to-br from-dark-gray-dark to-dark-gray rounded-2xl overflow-hidden hover:scale-105 transition-transform duration-700 shadow-2xl">
                 <img 
                   src={typewriterImage} 
                   alt="Vintage typewriter for contact"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-navy/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-dark-gray-dark/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </div>
               
               {/* Floating Elements */}
-              <div className="absolute -top-4 -right-4 w-8 h-8 bg-golden rounded-full animate-bounce opacity-80"></div>
-              <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-navy rounded-full animate-pulse opacity-60"></div>
+              <div className="absolute -top-4 -right-4 w-8 h-8 bg-teal rounded-full animate-bounce opacity-80"></div>
+              <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-dark-gray rounded-full animate-pulse opacity-60"></div>
             </div>
 
             {/* Enhanced Footer */}
-            <div className="space-y-6 bg-navy-light/20 backdrop-blur-sm rounded-2xl p-8 border border-golden/20">
+            <div className="space-y-6 bg-dark-gray-dark/20 backdrop-blur-sm rounded-2xl p-8 border border-dark-gray-dark/50">
               <div className="text-center space-y-4">
-                <h4 className="text-golden font-bold text-lg">Let's Connect</h4>
-                <p className="text-golden/70 text-sm">
+                <h4 className="text-foreground font-bold text-lg">Let's Connect</h4>
+                <p className="text-foreground/70 text-sm">
                   Follow me on social media for updates and insights
                 </p>
               </div>
@@ -310,7 +308,7 @@ const ContactSection = () => {
                   href="https://github.com/NumanAkram" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="group text-golden hover:text-golden-light transition-all duration-300 p-3 rounded-full hover:bg-golden/10 hover:scale-110"
+                  className="group text-foreground hover:text-teal transition-all duration-300 p-3 rounded-full hover:bg-teal/10 hover:scale-110"
                 >
                   <Github className="w-6 h-6 group-hover:rotate-12 transition-transform duration-300" />
                 </a>
@@ -318,7 +316,7 @@ const ContactSection = () => {
                   href="https://www.linkedin.com/in/muhammad-numan-senior-full-stack-developer/" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="group text-golden hover:text-golden-light transition-all duration-300 p-3 rounded-full hover:bg-golden/10 hover:scale-110"
+                  className="group text-foreground hover:text-teal transition-all duration-300 p-3 rounded-full hover:bg-teal/10 hover:scale-110"
                 >
                   <Linkedin className="w-6 h-6 group-hover:rotate-12 transition-transform duration-300" />
                 </a>
@@ -326,15 +324,15 @@ const ContactSection = () => {
                   href="https://wa.me/923225106048" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="group text-golden hover:text-golden-light transition-all duration-300 p-3 rounded-full hover:bg-golden/10 hover:scale-110"
+                  className="group text-foreground hover:text-teal transition-all duration-300 p-3 rounded-full hover:bg-teal/10 hover:scale-110"
                 >
                   <MessageCircle className="w-6 h-6 group-hover:rotate-12 transition-transform duration-300" />
                 </a>
                 
               </div>
               
-              <div className="text-center pt-4 border-t border-golden/20">
-                <p className="text-golden/60 text-sm">© 2024 Numan Akram. All rights reserved.</p>
+              <div className="text-center pt-4 border-t border-dark-gray-dark/20">
+                <p className="text-foreground/60 text-sm">© 2024 Numan Akram. All rights reserved.</p>
               </div>
             </div>
           </div>

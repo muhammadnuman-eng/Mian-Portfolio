@@ -29,10 +29,20 @@ export default {
 					dark: 'hsl(var(--golden-dark))',
 					light: 'hsl(var(--golden-light))'
 				},
+				teal: {
+					DEFAULT: 'hsl(var(--teal))',
+					dark: 'hsl(var(--teal-dark))',
+					light: 'hsl(var(--teal-light))'
+				},
 				navy: {
 					DEFAULT: 'hsl(var(--dark-navy))',
 					light: 'hsl(var(--dark-navy-light))',
 					dark: 'hsl(var(--dark-navy-dark))'
+				},
+				'dark-gray': {
+					DEFAULT: 'hsl(var(--dark-gray))',
+					light: 'hsl(var(--dark-gray-light))',
+					dark: 'hsl(var(--dark-gray-dark))'
 				},
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
