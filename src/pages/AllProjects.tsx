@@ -83,7 +83,7 @@ const AllProjects = () => {
             <Button
               onClick={handleBack}
               variant="ghost"
-              className="text-white/70 hover:text-teal hover:bg-teal/10 transition-all duration-300 flex items-center gap-2"
+              className="text-foreground/70 hover:text-teal hover:bg-teal/10 transition-all duration-300 flex items-center gap-2"
             >
               <ArrowLeft className="w-5 h-5" />
               Back to Home
@@ -93,9 +93,9 @@ const AllProjects = () => {
           <div className="text-center">
             <div className="flex items-center justify-center space-x-3 mb-6">
               <div className="w-8 h-8 hexagon bg-teal animate-scale-in"></div>
-              <h1 className="text-3xl lg:text-4xl font-black text-white">All Projects</h1>
+              <h1 className="text-3xl lg:text-4xl font-black text-foreground">All Projects</h1>
             </div>
-            <p className="text-white/70 text-lg max-w-2xl mx-auto">
+            <p className="text-foreground/70 text-lg max-w-2xl mx-auto">
               Explore my complete portfolio of web applications, websites, and digital solutions built with modern technologies.
             </p>
           </div>
@@ -110,7 +110,11 @@ const AllProjects = () => {
                 isVisible ? 'visible' : ''
               } shadow-xl hover:shadow-2xl border border-dark-gray-dark/50 hover:border-teal/50`}
               style={{ animationDelay: `${index * 0.1}s` }}
-              onClick={() => window.open(project.link, '_blank')}
+              onClick={() => {
+                if (project.link && project.link !== '#' && project.link !== '') {
+                  window.open(project.link, '_blank');
+                }
+              }}
             >
               {/* Project Image */}
               <div className="aspect-[4/3] bg-gradient-to-br from-dark-gray-dark to-dark-gray overflow-hidden relative">
@@ -121,16 +125,22 @@ const AllProjects = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-dark-gray-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500">
-                  <div className="bg-teal/90 backdrop-blur-sm rounded-full p-4 transform scale-75 group-hover:scale-100 transition-transform duration-500">
-                    <ExternalLink className="w-6 h-6 text-white" />
-                  </div>
+                  {(!project.link || project.link === '#' || project.link === '') ? (
+                    <div className="transform scale-75 group-hover:scale-100 transition-transform duration-500">
+                      <span className="text-yellow-400 font-bold text-xl">Coming Soon</span>
+                    </div>
+                  ) : (
+                    <div className="bg-teal/90 backdrop-blur-sm rounded-full p-4 transform scale-75 group-hover:scale-100 transition-transform duration-500">
+                      <ExternalLink className="w-6 h-6 text-white" />
+                    </div>
+                  )}
                 </div>
               </div>
 
               {/* Project Info */}
               <div className="p-8 space-y-5">
                 {/* Project Title - Large and Bold */}
-                <h3 className="text-2xl font-bold text-white group-hover:text-teal transition-colors leading-tight">
+                <h3 className="text-2xl font-bold text-foreground group-hover:text-teal transition-colors leading-tight">
                   {project.title}
                 </h3>
 
@@ -148,7 +158,7 @@ const AllProjects = () => {
                 </div>
 
                 {/* Project Description */}
-                <p className="text-white/70 text-sm leading-relaxed">
+                <p className="text-foreground/70 text-sm leading-relaxed">
                   {project.description || `A modern project built with cutting-edge technology and industry best practices.`}
                 </p>
               </div>

@@ -120,11 +120,11 @@
     --dark-gray-dark: 0 0% 10%;
   }
   
-  :root:not(.dark) {
+  .light {
     --background: 0 0% 98%;
     --foreground: 0 0% 10%;
 
-    --card: 0 0% 100%;
+    --card: 0 0% 98%;
     --card-foreground: 0 0% 10%;
 
     --popover: 0 0% 100%;
@@ -134,10 +134,10 @@
     --primary-foreground: 0 0% 98%;
 
     --secondary: 0 0% 95%;
-    --secondary-foreground: 0 0% 10%;
+    --secondary-foreground: 0 0% 5%;
 
     --muted: 0 0% 95%;
-    --muted-foreground: 0 0% 40%;
+    --muted-foreground: 0 0% 15%;
 
     --accent: 170 60% 50%;
     --accent-foreground: 0 0% 98%;
@@ -145,7 +145,7 @@
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 85%;
+    --border: 0 0% 75%;
     --input: 0 0% 95%;
     --ring: 170 60% 50%;
     --sidebar-background: 0 0% 98%;
@@ -179,16 +179,16 @@
   
   /* Custom Cursor - Circle with Dot */
   /* Show both default cursor and custom cursor */
-  
+
   /* Show default cursor on input fields */
   input, textarea, select, [contenteditable="true"] {
     cursor: text !important;
   }
-  
+
   input:hover, textarea:hover, select:hover, [contenteditable="true"]:hover {
     cursor: text !important;
   }
-  
+
   .custom-cursor {
     position: fixed;
     width: 30px;
@@ -199,12 +199,12 @@
     z-index: 99999;
     transform: translate(-50%, -50%);
     will-change: transform;
-    transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
-                height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+    transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
                 border-color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     background: transparent;
   }
-  
+
   .custom-cursor::before {
     content: '';
     position: absolute;
@@ -220,13 +220,30 @@
                 height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     will-change: width, height, background;
   }
-  
+
+  /* Light mode cursor colors - dark instead of white */
+  :root:not(.dark) .custom-cursor {
+    border: 1.5px solid rgba(0, 0, 0, 0.8);
+  }
+
+  :root:not(.dark) .custom-cursor::before {
+    background: rgba(0, 0, 0, 0.9);
+  }
+
+  :root:not(.dark) .custom-cursor.hover {
+    border-color: hsl(var(--teal) / 0.7);
+  }
+
+  :root:not(.dark) .custom-cursor.hover::before {
+    background: hsl(var(--teal) / 0.9);
+  }
+
   .custom-cursor.hover {
     width: 40px;
     height: 40px;
     border-color: hsl(var(--teal) / 0.7);
   }
-  
+
   .custom-cursor.hover::before {
     background: hsl(var(--teal) / 0.9);
     width: 8px;
@@ -505,5 +522,37 @@
   
   .border-teal {
     border-color: hsl(var(--teal));
+  }
+
+  /* Profile Image Background Removal */
+  .profile-image-no-bg {
+    mix-blend-mode: multiply;
+    filter: contrast(1.2) brightness(0.95);
+  }
+
+  /* For dark backgrounds, use screen blend mode */
+  .dark .profile-image-no-bg,
+  [data-theme="dark"] .profile-image-no-bg {
+    mix-blend-mode: screen;
+    filter: contrast(1.1) brightness(1.05);
+  }
+
+  /* Alternative: Remove white background using CSS filters */
+  .profile-image-no-bg {
+    background: transparent;
+    -webkit-filter: contrast(1.15) brightness(0.98);
+    filter: contrast(1.15) brightness(0.98);
+  }
+
+  /* Mobile Navigation Slide Animation */
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
   }
 }

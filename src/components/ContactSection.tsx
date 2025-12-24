@@ -126,18 +126,18 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" ref={sectionRef} className="py-20 bg-background relative overflow-hidden">
+    <section id="contact" ref={sectionRef} className="py-0 bg-background relative overflow-hidden px-4 sm:px-6 lg:px-8">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-20 right-10 w-32 h-32 hexagon border border-teal/20"></div>
-        <div className="absolute bottom-20 left-10 w-24 h-24 hexagon border border-teal/20"></div>
-        <div className="absolute top-1/2 right-1/4 w-20 h-20 hexagon border border-teal/20"></div>
+        <div className="absolute top-10 sm:top-20 right-4 sm:right-10 w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 xl:w-32 xl:h-32 hexagon border border-teal/20"></div>
+        <div className="absolute bottom-10 sm:bottom-20 left-4 sm:left-10 w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 xl:w-24 xl:h-24 hexagon border border-teal/20"></div>
+        <div className="absolute top-1/2 right-1/4 w-10 h-10 sm:w-12 sm:h-12 lg:w-16 lg:h-16 xl:w-20 xl:h-20 hexagon border border-teal/20"></div>
       </div>
-      
-      <div className="max-w-7xl mx-auto px-8 sm:px-12 lg:px-16 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
+
+      <div className={`fade-in-up ${isVisible ? 'visible' : ''} relative max-w-7xl w-full mx-auto bg-card rounded-lg m-4 p-6 lg:p-8 xl:p-10 shadow-xl border-2 border-border overflow-hidden`} style={{ animationDelay: "0.2s" }}>
+        <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 xl:gap-16 items-start">
           {/* Left Content - Enhanced Contact Form */}
-          <div className={`space-y-8 fade-in-up ${isVisible ? 'visible' : ''}`}>
+          <div className={`space-y-6 sm:space-y-8 fade-in-up ${isVisible ? 'visible' : ''}`}>
             <div className="space-y-6">
               <div className="flex items-center space-x-4 mb-8">
                 <div className="w-8 h-8 hexagon bg-gradient-to-br from-teal to-teal-dark animate-scale-in shadow-lg"></div>
@@ -145,7 +145,7 @@ const ContactSection = () => {
               </div>
               
               <div className="space-y-4">
-                <h3 className="text-3xl lg:text-4xl font-black text-foreground leading-tight whitespace-nowrap">
+                <h3 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-black text-foreground leading-tight">
                   Let's Create <span className="text-teal">Something Amazing Together</span>
                 </h3>
                 <p className="text-foreground/70 text-lg leading-relaxed">
@@ -154,9 +154,9 @@ const ContactSection = () => {
               </div>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-6 bg-muted/30 backdrop-blur-sm rounded-2xl p-8 border border-border">
+            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6 bg-muted/30 backdrop-blur-sm rounded-2xl p-4 sm:p-6 lg:p-8 border border-border">
               {/* First Row: First Name + Last Name */}
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
                 <div className="space-y-2">
                   <label className="block text-foreground text-sm font-semibold mb-2">
                     FIRST NAME*
@@ -191,7 +191,7 @@ const ContactSection = () => {
               </div>
 
               {/* Second Row: Phone + Email */}
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
                 <div className="space-y-2">
                   <label className="block text-foreground text-sm font-semibold mb-2">
                     PHONE*
@@ -235,7 +235,7 @@ const ContactSection = () => {
                   name="subject"
                   value={formData.subject}
                   onChange={handleInputChange}
-                  className="bg-dark-gray-dark/50 border-dark-gray-dark/50 text-foreground placeholder:text-foreground/50 focus:border-teal focus:ring-2 focus:ring-teal/20 text-sm h-12 hover:border-teal/50 transition-all duration-300 rounded-xl"
+                  className="bg-muted/50 border-border text-foreground placeholder:text-foreground/50 focus:border-teal focus:ring-2 focus:ring-teal/20 text-sm h-12 hover:border-teal/50 transition-all duration-300 rounded-xl"
                   placeholder="Project subject"
                   disabled={isLoading}
                 />
@@ -250,7 +250,7 @@ const ContactSection = () => {
                   value={formData.message}
                   onChange={handleInputChange}
                   rows={5}
-                  className="bg-dark-gray-dark/50 border-dark-gray-dark/50 text-foreground placeholder:text-foreground/50 focus:border-teal focus:ring-2 focus:ring-teal/20 resize-none text-sm hover:border-teal/50 transition-all duration-300 rounded-xl"
+                  className="bg-muted/50 border-border text-foreground placeholder:text-foreground/50 focus:border-teal focus:ring-2 focus:ring-teal/20 resize-none text-sm hover:border-teal/50 transition-all duration-300 rounded-xl"
                   placeholder="Tell me about your project..."
                   required
                   disabled={isLoading}
@@ -260,7 +260,7 @@ const ContactSection = () => {
               <Button
                 type="submit"
                 disabled={isLoading}
-                className="group bg-teal text-foreground hover:bg-teal-dark hover:scale-105 transition-all duration-300 px-8 py-4 text-base font-semibold rounded-full shadow-xl hover:shadow-2xl flex items-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed w-full md:w-auto"
+                className="group bg-teal text-foreground hover:bg-teal-dark hover:scale-105 transition-all duration-300 px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold rounded-full shadow-xl hover:shadow-2xl flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed w-full"
               >
                 {isLoading ? (
                   <>
@@ -277,9 +277,9 @@ const ContactSection = () => {
             </form>
           </div>
           {/* Right Content - Enhanced Image & Footer */}
-          <div className={`space-y-8 fade-in-up lg:self-end ${isVisible ? 'visible' : ''}`} style={{animationDelay: '0.3s'}}>
+          <div className={`space-y-6 sm:space-y-8 fade-in-up lg:self-end ${isVisible ? 'visible' : ''}`} style={{animationDelay: '0.3s'}}>
             {/* Contact Image */}
-            <div className="relative group">
+            <div className="relative group max-w-md mx-auto lg:max-w-none">
               <div className="aspect-[4/3] bg-gradient-to-br from-dark-gray-dark to-dark-gray rounded-2xl overflow-hidden hover:scale-105 transition-transform duration-700 shadow-2xl">
                 <img 
                   src={typewriterImage} 
@@ -295,7 +295,7 @@ const ContactSection = () => {
             </div>
 
             {/* Enhanced Footer */}
-            <div className="space-y-6 bg-dark-gray-dark/20 backdrop-blur-sm rounded-2xl p-8 border border-dark-gray-dark/50">
+            <div className="space-y-4 sm:space-y-6 bg-dark-gray-dark/20 backdrop-blur-sm rounded-2xl p-4 sm:p-6 lg:p-8 border border-dark-gray-dark/50">
               <div className="text-center space-y-4">
                 <h4 className="text-foreground font-bold text-lg">Let's Connect</h4>
                 <p className="text-foreground/70 text-sm">
@@ -303,7 +303,7 @@ const ContactSection = () => {
                 </p>
               </div>
               
-              <div className="flex justify-center space-x-6">
+              <div className="flex justify-center space-x-4 sm:space-x-6">
                 <a 
                   href="https://github.com/NumanAkram" 
                   target="_blank" 

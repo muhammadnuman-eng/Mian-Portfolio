@@ -86,17 +86,17 @@ const ExperienceSection = () => {
   }, []);
 
   return (
-    <section id="experience" ref={sectionRef} className="py-16 bg-background">
-      <div className="max-w-7xl mx-auto px-8 sm:px-12 lg:px-16">
+    <section id="experience" ref={sectionRef} className="py-0 bg-background relative overflow-hidden px-4 sm:px-6 lg:px-8">
+      <div className={`fade-in-up ${isVisible ? 'visible' : ''} relative max-w-7xl w-full mx-auto bg-card rounded-lg m-4 p-6 lg:p-8 xl:p-10 shadow-xl border-2 border-border overflow-hidden`} style={{ animationDelay: "0.2s" }}>
         {/* Header */}
-        <div className={`mb-12 fade-in-up ${isVisible ? 'visible' : ''}`}>
+        <div className={`mb-8 sm:mb-10 lg:mb-12 fade-in-up ${isVisible ? 'visible' : ''}`}>
           <div className="flex items-center space-x-3 mb-6">
             <div className="w-6 h-6 hexagon bg-teal animate-scale-in"></div>
             <h2 className="text-lg font-bold text-foreground">Education & Experience</h2>
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8">
+        <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 xl:gap-12">
           {/* Education */}
           <div className={`fade-in-up ${isVisible ? 'visible' : ''}`}>
             <h3 className="text-lg font-bold text-foreground mb-6 flex items-center">
@@ -104,30 +104,30 @@ const ExperienceSection = () => {
               EDUCATION
             </h3>
             
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               {education.map((edu, index) => (
                 <div
                   key={index}
-                  className={`bg-card rounded-xl p-4 space-y-3 hover-scale fade-in-up ${isVisible ? 'visible' : ''} shadow-lg hover:shadow-xl transition-all duration-300`}
+                  className={`bg-card rounded-xl p-3 sm:p-4 space-y-2 sm:space-y-3 hover-scale fade-in-up ${isVisible ? 'visible' : ''} shadow-lg hover:shadow-xl transition-all duration-300`}
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   <div className="flex items-start justify-between">
                     <div className="space-y-1">
-                      <h4 className="text-sm font-bold text-foreground">
+                      <h4 className="text-base font-bold text-foreground">
                         {edu.degree}
                       </h4>
-                      <div className="flex items-center text-foreground/70 text-xs">
+                      <div className="flex items-center text-foreground/70 text-sm">
                         <MapPin className="w-3 h-3 mr-1" />
                         {edu.school}
                       </div>
                     </div>
-                    <div className="flex items-center text-foreground/70 text-xs">
+                    <div className="flex items-center text-foreground/70 text-sm">
                       <Calendar className="w-3 h-3 mr-1" />
                       {edu.period}
                     </div>
                   </div>
                   
-                  <p className="text-foreground/70 text-xs leading-relaxed">
+                  <p className="text-foreground/70 text-sm leading-relaxed">
                     {edu.description}
                   </p>
                 </div>
@@ -142,11 +142,11 @@ const ExperienceSection = () => {
               EXPERIENCE
             </h3>
             
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               {visibleExperiences.map((exp, index) => (
                 <div
                   key={index}
-                  className={`bg-card rounded-xl p-4 space-y-3 hover-scale fade-in-up ${isVisible ? 'visible' : ''} shadow-lg hover:shadow-xl transition-all duration-300`}
+                  className={`bg-card rounded-xl p-3 sm:p-4 space-y-2 sm:space-y-3 hover-scale fade-in-up ${isVisible ? 'visible' : ''} shadow-lg hover:shadow-xl transition-all duration-300`}
                   style={{ animationDelay: `${(index + 2) * 0.1}s` }}
                 >
                   <div className="flex items-start justify-between">
@@ -165,7 +165,7 @@ const ExperienceSection = () => {
                     </div>
                   </div>
                   
-                  <p className="text-foreground/70 text-xs leading-relaxed">
+                  <p className="text-foreground/70 text-sm leading-relaxed">
                     {exp.description}
                   </p>
                 </div>

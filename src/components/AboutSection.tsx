@@ -31,25 +31,25 @@ const AboutSection = () => {
   }, []);
 
   return (
-    <section id="about" ref={sectionRef} className="py-20 bg-background relative overflow-hidden">
+    <section id="about" ref={sectionRef} className="py-0 bg-background relative overflow-hidden px-4 sm:px-6 lg:px-8">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-20 left-10 w-32 h-32 hexagon border border-teal/20"></div>
-        <div className="absolute bottom-20 right-10 w-24 h-24 hexagon border border-teal/20"></div>
-        <div className="absolute top-1/2 left-1/4 w-16 h-16 hexagon border border-teal/20"></div>
+        <div className="absolute top-10 sm:top-20 left-4 sm:left-10 w-16 h-16 sm:w-24 sm:h-24 lg:w-32 lg:h-32 hexagon border border-teal/20"></div>
+        <div className="absolute bottom-10 sm:bottom-20 right-4 sm:right-10 w-12 h-12 sm:w-16 sm:h-16 lg:w-24 lg:h-24 hexagon border border-teal/20"></div>
+        <div className="absolute top-1/2 left-1/4 w-8 h-8 sm:w-12 sm:h-12 lg:w-16 lg:h-16 hexagon border border-teal/20"></div>
       </div>
-      
-      <div className="max-w-7xl mx-auto px-8 sm:px-12 lg:px-16 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
+
+      <div className={`fade-in-up ${isVisible ? 'visible' : ''} relative max-w-7xl w-full mx-auto bg-card rounded-lg m-4 p-6 lg:p-8 xl:p-10 shadow-xl border-2 border-border overflow-hidden`} style={{ animationDelay: "0.2s" }}>
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-start">
           {/* Left Content - About */}
-          <div className={`space-y-8 fade-in-up ${isVisible ? 'visible' : ''}`}>
+          <div className={`space-y-6 sm:space-y-8 fade-in-up ${isVisible ? 'visible' : ''}`}>
             <div className="flex items-center space-x-4 mb-8">
               <div className="w-8 h-8 hexagon bg-gradient-to-br from-teal to-teal-dark animate-scale-in shadow-lg"></div>
               <h2 className="text-xl font-bold text-foreground tracking-wide">About me</h2>
             </div>
 
             <div className="space-y-6">
-              <h3 className="text-3xl lg:text-4xl xl:text-5xl font-black text-foreground leading-tight">
+              <h3 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black text-foreground leading-tight">
                 MY PASSION IS <span className="bg-gradient-to-r from-teal to-teal-light bg-clip-text text-transparent">DESIGNING & DEVELOPING</span>
                 <br />
                 THE MEMORABLE WEBSITES THAT CONNECT
@@ -98,32 +98,31 @@ const AboutSection = () => {
         {/* Full-width description block below the grid */}
         <div className={`mt-12 fade-in-up ${isVisible ? 'visible' : ''}`}>
           <div className='w-full space-y-4'>
-            <p className="text-base text-foreground/70 leading-relaxed">
-              Hi, I'm <span className="font-semibold text-foreground">Numan Akram</span> - a Senior Full Stack Developer with 8+ years of experience, known for building scalable, user-centric web and cloud solutions.
+            <p className="text-lg text-foreground/70 leading-relaxed">
+              Hi, I'm <span className="font-semibold text-foreground">Numan Akram</span> - a Senior Full Stack Developer with 9+ years of experience, known for building scalable, user-centric web and cloud solutions.
             </p>
-            <p className="text-base text-foreground/70 leading-relaxed">
+            <p className="text-lg text-foreground/70 leading-relaxed">
               Skilled in Nuxt.js, React.js, Angular, Vue.js, Node.js, Nest.js, Laravel, and PHP. Highly proficient in front-end development using JavaScript, TypeScript, Tailwind CSS, Bootstrap, and modern UI/UX design principles.
             </p>
-            <p className="text-base text-foreground/70 leading-relaxed">
+            <p className="text-lg text-foreground/70 leading-relaxed">
               Expert in the MERN stack (MongoDB, Express.js, React.js, Node.js), RESTful and GraphQL APIs, and working with databases like MongoDB, PostgreSQL, MySQL, and Microsoft SQL Server.
             </p>
-            <p className="text-base text-foreground/70 leading-relaxed">
+            <p className="text-lg text-foreground/70 leading-relaxed">
               Strong in Python, using Django, Flask, and scripting for automation, data processing, and backend services. Experienced in AI/ML development using Python libraries like TensorFlow, scikit-learn, and Pandas, with a growing focus on Large Language Models (LLMs) and their integration via OpenAI API and LangChain.
             </p>
-            <p className="text-base text-foreground/70 leading-relaxed">
+            <p className="text-lg text-foreground/70 leading-relaxed">
               Capable of building intelligent applications that utilize natural language processing (NLP), embeddings, vector databases, and prompt engineering.
             </p>
-            <p className="text-base text-foreground/70 leading-relaxed">
+            <p className="text-lg text-foreground/70 leading-relaxed">
               Well-versed in deploying applications across AWS, Azure, GCP, and Firebase. Skilled in Docker, container orchestration, and CI/CD pipelines using GitHub Actions, GitLab CI/CD, Jenkins, and Azure DevOps. Confident with Git-based workflows (GitHub, Bitbucket, GitLab).
             </p>
-            <p className="text-base text-foreground/70 leading-relaxed">
+            <p className="text-lg text-foreground/70 leading-relaxed">
               Passionate about creating high-quality software, secure architecture, and keeping up with cutting-edge technologies. Strong communicator and collaborator in cross-functional teams, delivering clean, maintainable, and future-ready code.
             </p>
           </div>
         </div>
       </div>
 
-       
     </section>
   );
 };

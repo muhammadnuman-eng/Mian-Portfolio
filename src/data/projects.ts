@@ -185,7 +185,7 @@ export const allProjects: Project[] = [
     id: 18,
     title: "Grand Royale Group",
     category: "Laravel",
-    image: "/public/images/grandroyale (1).jpg",
+    image: "/images/grandroyale (1).jpg",
     link: "https://grandroyalegroup.com.au/",
     techStack: "WordPress Elemento-PRO Contact-Form-7 AI-Chatbot Ajax-Search-Lite",
     description: "Grand Royale Group provides B2B hospitality training via immersive WordPress simulations covering hotel management, events, and service excellence."
@@ -194,7 +194,7 @@ export const allProjects: Project[] = [
     id: 19,
     title: "Ormith",
     category: "Laravel",
-    image: "/public/images/ormith.jpg",
+    image: "/images/ormith.jpg",
     link: "https://ormith.com/",
     techStack: "WordPress Elementor Contact-Form-7 WooCommerce-WP Mail-SMTP",
     description: "A WordPress e-commerce site Ormith specializing in high-quality adhesive and sticky pad products for home and industrial use."

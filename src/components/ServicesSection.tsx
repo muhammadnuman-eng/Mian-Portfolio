@@ -36,9 +36,9 @@ const ServicesSection = () => {
   }, []);
 
   return (
-    <section id="services" ref={sectionRef} className="py-16 bg-background">
-      <div className="max-w-7xl mx-auto px-8 sm:px-12 lg:px-16">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+    <section id="services" ref={sectionRef} className="py-0 bg-background relative overflow-hidden px-4 sm:px-6 lg:px-8">
+      <div className={`fade-in-up ${isVisible ? 'visible' : ''} relative max-w-7xl w-full mx-auto bg-card rounded-lg m-4 p-6 lg:p-8 xl:p-10 shadow-xl border-2 border-border overflow-hidden`} style={{ animationDelay: "0.2s" }}>
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center">
           {/* Left Content */}
           <div className={`space-y-6 fade-in-up ${isVisible ? 'visible' : ''}`}>
             <div className="flex items-center space-x-3 mb-6">
@@ -47,7 +47,7 @@ const ServicesSection = () => {
             </div>
 
             <div className="space-y-4">
-              <h3 className="text-2xl lg:text-3xl font-black text-foreground leading-tight">
+              <h3 className="text-xl sm:text-2xl lg:text-3xl font-black text-foreground leading-tight">
                 I LIKE <span className="text-teal">MAKING THINGS</span> THAT ARE ENJOYABLE
                 <br />
                 AND SPECIAL
@@ -81,8 +81,8 @@ const ServicesSection = () => {
                 style={{ animationDelay: '0.4s' }}
               >
                 <div className="relative inline-block mb-3">
-                  <div className="w-24 h-24 hexagon bg-teal flex flex-col items-center justify-center hover:scale-110 transition-transform duration-300 animate-pulse">
-                    <span className="text-xl font-black text-foreground mb-1">
+                  <div className="w-20 h-20 sm:w-24 sm:h-24 hexagon bg-teal flex flex-col items-center justify-center hover:scale-110 transition-transform duration-300 animate-pulse">
+                    <span className="text-lg sm:text-xl font-black text-foreground mb-1">
                       {stats[0].number}
                     </span>
                     <span className="text-xs font-bold text-foreground text-center leading-tight">
@@ -95,14 +95,14 @@ const ServicesSection = () => {
               </div>
               
               {/* Bottom Row - 2 Hexagons */}
-              <div className="flex space-x-8">
+              <div className="flex space-x-4 sm:space-x-6 lg:space-x-8">
                 <div
                   className={`text-center fade-in-up hover-scale ${isVisible ? 'visible' : ''}`}
                   style={{ animationDelay: '0.5s' }}
                 >
                   <div className="relative inline-block mb-3">
-                    <div className="w-24 h-24 hexagon bg-teal flex flex-col items-center justify-center hover:scale-110 transition-transform duration-300 animate-pulse">
-                      <span className="text-xl font-black text-foreground mb-1">
+                    <div className="w-20 h-20 sm:w-24 sm:h-24 hexagon bg-teal flex flex-col items-center justify-center hover:scale-110 transition-transform duration-300 animate-pulse">
+                      <span className="text-lg sm:text-xl font-black text-foreground mb-1">
                         {stats[1].number}
                       </span>
                       <span className="text-xs font-bold text-foreground text-center leading-tight">
@@ -117,8 +117,8 @@ const ServicesSection = () => {
                   style={{ animationDelay: '0.6s' }}
                 >
                   <div className="relative inline-block mb-3">
-                    <div className="w-24 h-24 hexagon bg-teal flex flex-col items-center justify-center hover:scale-110 transition-transform duration-300 animate-pulse">
-                      <span className="text-xl font-black text-foreground mb-1">
+                    <div className="w-20 h-20 sm:w-24 sm:h-24 hexagon bg-teal flex flex-col items-center justify-center hover:scale-110 transition-transform duration-300 animate-pulse">
+                      <span className="text-lg sm:text-xl font-black text-foreground mb-1">
                         {stats[2].number}
                       </span>
                       <span className="text-xs font-bold text-foreground text-center leading-tight">

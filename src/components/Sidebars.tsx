@@ -11,8 +11,9 @@ const Sidebars = () => {
   const [currentTitle, setCurrentTitle] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
   const [titleIndex, setTitleIndex] = useState(0);
+  const [activeSection, setActiveSection] = useState("hero");
 
-  const titles = ["Full Stack Developer", "Team Lead", "Web Designer", "Photographer"];
+  const titles = ["Senior Full Stack Developer", "Team Lead", "Web Designer", "AI Developer"];
 
   useEffect(() => {
     setIsVisible(true);
@@ -86,6 +87,34 @@ const Sidebars = () => {
     };
   }, [showThemeMenu]);
 
+  // Active section tracking with Intersection Observer
+  useEffect(() => {
+    const sectionIds = ['hero', 'about', 'works', 'services', 'experience', 'contact'];
+
+    const observers = sectionIds.map(sectionId => {
+      const element = document.getElementById(sectionId);
+      if (!element) return null;
+
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setActiveSection(sectionId);
+          }
+        },
+        {
+          rootMargin: '-50% 0px -50% 0px', // Trigger when section is in the middle of viewport
+          threshold: 0
+        }
+      );
+
+      observer.observe(element);
+      return observer;
+    });
+
+    return () => {
+      observers.forEach(observer => observer?.disconnect());
+    };
+  }, []);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -162,10 +191,10 @@ const Sidebars = () => {
   return (
     <>
       {/* Fixed Left Sidebar - Profile Card */}
-      <div className={`fixed left-0 top-0 h-[calc(100vh-2rem)] w-[320px] bg-card rounded-xl m-4 p-6 space-y-6 fade-in-up ${isVisible ? "visible" : ""} overflow-hidden z-50 hidden lg:flex flex-col shadow-xl border-2 border-border`}>
+      <div className={`fixed left-0 top-0 h-[calc(100vh-1rem)] lg:h-[calc(100vh-2rem)] w-[280px] lg:w-[320px] xl:w-[352px] bg-card rounded-xl m-2 lg:m-4 p-4 lg:p-6 space-y-4 lg:space-y-6 fade-in-up ${isVisible ? "visible" : ""} overflow-hidden z-50 hidden lg:flex flex-col shadow-xl border-2 border-border`}>
         {/* Profile Picture */}
         <div className="flex justify-center pt-2">
-          <div className="w-32 h-32 rounded-full overflow-hidden border-2 border-teal shadow-lg">
+          <div className="w-24 lg:w-32 h-24 lg:h-32 rounded-full overflow-hidden border-2 border-teal shadow-lg">
             <img
               src="/images/main_image.jpeg"
               alt="Profile"
@@ -207,7 +236,7 @@ const Sidebars = () => {
               {skills.map((skill, index) => (
                 <div key={skill.name} className="flex flex-col items-center space-y-1">
                   <CircularProgress percentage={skill.level} size={50} />
-                  <span className="text-white text-xs">{skill.name}</span>
+                  <span className="text-foreground text-xs">{skill.name}</span>
                 </div>
               ))}
             </div>
@@ -224,7 +253,7 @@ const Sidebars = () => {
       </div>
 
       {/* Fixed Right Sidebar - Navigation */}
-      <div className={`fixed right-4 top-[20%] w-[80px] bg-card rounded-xl flex flex-col items-center gap-3 py-6 fade-in-up ${isVisible ? "visible" : ""} z-40 hidden lg:flex shadow-xl border-2 border-border`} style={{ animationDelay: "0.4s" }}>
+      <div className={`fixed right-2 lg:right-4 top-[20%] w-[70px] lg:w-[80px] bg-card rounded-xl flex flex-col items-center gap-2 lg:gap-3 py-4 lg:py-6 fade-in-up ${isVisible ? "visible" : ""} z-40 hidden lg:flex shadow-xl border-2 border-border`} style={{ animationDelay: "0.4s" }}>
         {/* Top Arrow Button with Border */}
         <button className="text-teal hover:text-teal-light transition-all duration-300 p-2 hover:scale-110 border border-border rounded-full">
           <ArrowRight className="w-5 h-5" />
@@ -234,14 +263,21 @@ const Sidebars = () => {
         {/* Navigation Items - Home, About, Works */}
         {navItems.slice(0, 3).map((item, index) => {
           const Icon = item.icon;
+          const isActive = activeSection === item.id;
           return (
             <button
               key={index}
               onClick={() => scrollToSection(item.id)}
-              className="relative text-foreground/70 hover:text-teal transition-all duration-300 p-2 group hover:bg-muted/30 rounded-lg"
+              className={`relative transition-all duration-300 p-2 group rounded-lg ${
+                isActive
+                  ? 'text-teal bg-teal/10 shadow-lg'
+                  : 'text-foreground/70 hover:text-teal hover:bg-muted/30'
+              }`}
               title={item.id}
             >
-              <Icon className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
+              <Icon className={`w-5 h-5 transition-transform duration-300 ${
+                isActive ? 'scale-110' : 'group-hover:scale-110'
+              }`} />
               {item.badge && (
                 <span className="absolute -top-1 -right-1 w-2 h-2 bg-teal rounded-full animate-pulse"></span>
               )}
@@ -252,23 +288,36 @@ const Sidebars = () => {
         {/* My Services Button - After Works */}
         <button
           onClick={() => scrollToSection("services")}
-          className="relative text-foreground/70 hover:text-teal transition-all duration-300 p-2 group hover:bg-muted/30 rounded-lg"
+          className={`relative transition-all duration-300 p-2 group rounded-lg ${
+            activeSection === "services"
+              ? 'text-teal bg-teal/10 shadow-lg'
+              : 'text-foreground/70 hover:text-teal hover:bg-muted/30'
+          }`}
           title="Services"
         >
-          <Wrench className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
+          <Wrench className={`w-5 h-5 transition-transform duration-300 ${
+            activeSection === "services" ? 'scale-110' : 'group-hover:scale-110'
+          }`} />
         </button>
         
         {/* Navigation Items - Experience, Contact */}
         {navItems.slice(3).map((item, index) => {
           const Icon = item.icon;
+          const isActive = activeSection === item.id;
           return (
             <button
               key={index + 3}
               onClick={() => scrollToSection(item.id)}
-              className="relative text-foreground/70 hover:text-teal transition-all duration-300 p-2 group hover:bg-muted/30 rounded-lg"
+              className={`relative transition-all duration-300 p-2 group rounded-lg ${
+                isActive
+                  ? 'text-teal bg-teal/10 shadow-lg'
+                  : 'text-foreground/70 hover:text-teal hover:bg-muted/30'
+              }`}
               title={item.id}
             >
-              <Icon className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
+              <Icon className={`w-5 h-5 transition-transform duration-300 ${
+                isActive ? 'scale-110' : 'group-hover:scale-110'
+              }`} />
               {item.badge && (
                 <span className="absolute -top-1 -right-1 w-2 h-2 bg-teal rounded-full animate-pulse"></span>
               )}
@@ -322,6 +371,7 @@ const Sidebars = () => {
           )}
         </div>
       </div>
+
     </>
   );
 };
