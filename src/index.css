@@ -490,6 +490,29 @@
   .glow {
     box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
   }
+
+  /* Stats hexagon — very light subtle bling */
+  @keyframes statHexagonGlow {
+    0%, 100% {
+      filter: brightness(1) drop-shadow(0 0 4px hsl(var(--teal) / 0.06));
+      opacity: 1;
+    }
+    50% {
+      filter: brightness(1.03) drop-shadow(0 0 8px hsl(var(--teal) / 0.12));
+      opacity: 0.97;
+    }
+  }
+
+  .stat-hexagon-pro {
+    background: linear-gradient(160deg, hsl(var(--teal-dark)) 0%, hsl(var(--teal)) 55%, hsl(var(--teal-light)) 100%);
+    animation: statHexagonGlow 6.5s ease-in-out infinite;
+    transition: transform 0.5s ease, filter 0.5s ease;
+  }
+
+  .stat-hexagon-pro:hover {
+    transform: scale(1.04);
+    filter: brightness(1.05) drop-shadow(0 0 10px hsl(var(--teal) / 0.16));
+  }
   
   .glow:hover {
     box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);

@@ -1,12 +1,18 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Github, Linkedin, Dribbble, MessageCircle, Settings, Sun, Moon, User, Briefcase, Wrench, GraduationCap, FileText } from 'lucide-react';
+import { Menu, X, Github, Linkedin, MessageCircle, Settings, Sun, Moon, User, Briefcase, Wrench, GraduationCap, FileText, Code2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useTheme } from '@/contexts/ThemeContext';
+import { scrollToSection } from '@/lib/scroll';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showThemeMenu, setShowThemeMenu] = useState(false);
   const { theme, setTheme } = useTheme();
+
+  const navigateTo = (sectionId: string) => {
+    scrollToSection(sectionId);
+    setIsOpen(false);
+  };
 
   // Close theme menu when clicking outside
   useEffect(() => {
@@ -26,14 +32,6 @@ const Navigation = () => {
     };
   }, [showThemeMenu]);
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsOpen(false);
-    }
-  };
-
   return (
     <>
       <nav className="fixed top-0 left-0 right-0 z-50 bg-card/95 backdrop-blur-lg border-b border-border shadow-lg lg:hidden">
@@ -42,20 +40,20 @@ const Navigation = () => {
           {/* Logo - Enhanced */}
           <div className="flex items-center space-x-4">
             <button
-              onClick={() => scrollToSection('hero')}
+              onClick={() => navigateTo('hero')}
               className="group bg-teal text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-full font-bold text-sm sm:text-base hover:bg-teal-dark hover:scale-105 hover:shadow-lg transition-all duration-300 flex items-center gap-2"
             >
               <div className="w-2 h-2 bg-white rounded-full group-hover:animate-pulse"></div>
-              <span>Numan</span>
+              <span>Muhammad Numan</span>
             </button>
           </div>
 
           {/* Desktop Navigation - Hidden on mobile */}
           <div className="hidden md:flex items-center space-x-8">
-            {['About', 'Works', 'Services', 'Experience', 'Contact'].map((item) => (
+            {['About', 'Skills', 'Works', 'Services', 'Experience', 'Contact'].map((item) => (
               <button
                 key={item}
-                onClick={() => scrollToSection(item.toLowerCase())}
+                onClick={() => navigateTo(item.toLowerCase())}
                 className="text-teal hover:text-teal-light font-medium text-sm transition-colors duration-300 relative group"
               >
                 {item}
@@ -81,7 +79,7 @@ const Navigation = () => {
           {/* Social Icons - Enhanced */}
           <div className="hidden md:flex items-center space-x-4">
             <a 
-              href="https://github.com/NumanAkram" 
+              href="https://github.com/muhammadnuman-eng" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-teal hover:text-teal-light hover:scale-110 transition-all duration-300 p-2 rounded-lg hover:bg-teal/10 group"
@@ -89,7 +87,7 @@ const Navigation = () => {
               <Github className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
             </a>
             <a 
-              href="https://www.linkedin.com/in/muhammad-numan-senior-full-stack-developer/" 
+              href="https://www.linkedin.com/in/nomandev786/" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-teal hover:text-teal-light hover:scale-110 transition-all duration-300 p-2 rounded-lg hover:bg-teal/10 group"
@@ -151,6 +149,7 @@ const Navigation = () => {
             {/* Navigation Items */}
             {[
               { name: 'About', icon: User },
+              { name: 'Skills', icon: Code2 },
               { name: 'Works', icon: Briefcase },
               { name: 'Services', icon: Wrench },
               { name: 'Experience', icon: GraduationCap },
@@ -161,7 +160,7 @@ const Navigation = () => {
                 <button
                   key={item.name}
                   onClick={() => {
-                    scrollToSection(item.name.toLowerCase());
+                    navigateTo(item.name.toLowerCase());
                     setIsOpen(false);
                   }}
                   className="w-full flex items-center gap-2 text-foreground hover:text-teal hover:bg-muted/30 px-2.5 py-2.5 rounded-lg transition-all duration-500 ease-out text-left group hover:translate-x-1"
@@ -188,7 +187,7 @@ const Navigation = () => {
             <h3 className="text-sm font-medium text-foreground mb-3">Get in Touch</h3>
             <div className="flex justify-center gap-4">
               <a
-                href="https://github.com/NumanAkram"
+                href="https://github.com/muhammadnuman-eng"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-foreground hover:text-teal transition-colors duration-300 p-2 hover:bg-muted/30 rounded-lg"
@@ -196,7 +195,7 @@ const Navigation = () => {
                 <Github className="w-5 h-5" />
               </a>
               <a
-                href="https://www.linkedin.com/in/muhammad-numan-senior-full-stack-developer/"
+                href="https://www.linkedin.com/in/nomandev786/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-foreground hover:text-teal transition-colors duration-300 p-2 hover:bg-muted/30 rounded-lg"

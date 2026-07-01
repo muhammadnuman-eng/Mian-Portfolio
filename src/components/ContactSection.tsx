@@ -305,7 +305,7 @@ const ContactSection = () => {
               
               <div className="flex justify-center space-x-4 sm:space-x-6">
                 <a 
-                  href="https://github.com/NumanAkram" 
+                  href="https://github.com/muhammadnuman-eng" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="group text-foreground hover:text-teal transition-all duration-300 p-3 rounded-full hover:bg-teal/10 hover:scale-110"
@@ -313,7 +313,7 @@ const ContactSection = () => {
                   <Github className="w-6 h-6 group-hover:rotate-12 transition-transform duration-300" />
                 </a>
                 <a 
-                  href="https://www.linkedin.com/in/muhammad-numan-senior-full-stack-developer/" 
+                  href="https://www.linkedin.com/in/nomandev786/" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="group text-foreground hover:text-teal transition-all duration-300 p-3 rounded-full hover:bg-teal/10 hover:scale-110"
@@ -332,7 +332,7 @@ const ContactSection = () => {
               </div>
               
               <div className="text-center pt-4 border-t border-dark-gray-dark/20">
-                <p className="text-foreground/60 text-sm">© 2024 Numan Akram. All rights reserved.</p>
+                <p className="text-foreground/60 text-sm">© 2026 Muhammad Numan. All rights reserved.</p>
               </div>
             </div>
           </div>

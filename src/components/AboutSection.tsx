@@ -7,7 +7,7 @@ const AboutSection = () => {
 
   const skills = [
     { name: 'DEVELOPMENT', level: 90 },
-    { name: 'WEBFLOW', level: 75 },
+    { name: 'E-COMMERCE', level: 92 },
     { name: 'DEPLOYMENTS/DEVOPS', level: 85 },
     { name: 'AI MODEL TRAINING', level: 90 }
   ];
@@ -99,7 +99,7 @@ const AboutSection = () => {
         <div className={`mt-12 fade-in-up ${isVisible ? 'visible' : ''}`}>
           <div className='w-full space-y-4'>
             <p className="text-lg text-foreground/70 leading-relaxed">
-              Hi, I'm <span className="font-semibold text-foreground">Numan Akram</span> - a Senior Full Stack Developer with 9+ years of experience, known for building scalable, user-centric web and cloud solutions.
+              Hi, I'm <span className="font-semibold text-foreground">Muhammad Numan</span> - a Senior Full Stack Developer with 10+ years of experience, known for building scalable, user-centric web and cloud solutions.
             </p>
             <p className="text-lg text-foreground/70 leading-relaxed">
               Skilled in Nuxt.js, React.js, Angular, Vue.js, Node.js, Nest.js, Laravel, and PHP. Highly proficient in front-end development using JavaScript, TypeScript, Tailwind CSS, Bootstrap, and modern UI/UX design principles.

@@ -24,44 +24,33 @@ const ExperienceSection = () => {
 
   const experience = [
     {
-      position: "FULL STACK LEAD ENGINEER",
-      company: "Cognita-Innovative Solutions",
-      period: "Jan 2024 - Present",
+      position: "SENIOR FULL STACK DEVELOPER",
+      company: "Linked Matrix",
+      period: "Mar 2025 - Present",
       description:
-        "Overseeing the development of enterprise-grade web applications using Next.js, Laravel, and AWS. Responsible for technical architecture, mentoring engineers, and driving innovation across product development."
+        "Designed and developed scalable web applications using Laravel, Python, React.js, Next.js, and Vue.js, delivering high-performance and user-centric solutions. Built and integrated AI-powered features, LLM applications, chatbots, and automation workflows using OpenAI, LangChain, and vector databases. Architected and maintained RESTful APIs, microservices, and enterprise-grade backend systems. Designed, optimized, and managed MySQL, PostgreSQL, MongoDB, Redis, and Elasticsearch databases. Implemented cloud-native deployments, Docker containerization, Kubernetes orchestration, and CI/CD pipelines on AWS. Collaborated with cross-functional teams, mentored developers, and led end-to-end project execution from requirements gathering to deployment and ongoing maintenance."
     },
     {
-      position: "TECHNICAL TEAM LEAD",
-      company: "Jan's Group",
-      period: "Jan 2022 - Dec 2023",
+      position: "SENIOR FULL STACK DEVELOPER & TEAM LEAD",
+      company: "HRDRV",
+      period: "Apr 2023 - Feb 2025",
       description:
-        "Managed a team of engineers building SaaS-based business solutions. Implemented modern DevOps practices, improved system scalability, and guided developers on clean architecture and testing strategies."
+        "Led the design, development, and delivery of scalable web, mobile, and cloud-native applications using Laravel, React.js, React Native, Vue.js, and Python. Managed and mentored remote development teams through code reviews, technical planning, task allocation, and performance coaching. Architected clean, maintainable, and scalable software solutions following best practices and modern development standards. Developed and integrated RESTful APIs, third-party services, payment gateways, cloud platforms, and AI-powered features. Implemented CI/CD pipelines, Docker-based deployments, cloud infrastructure, and performance optimization strategies. Collaborated closely with stakeholders across requirements analysis, solution architecture, development, testing, deployment, and ongoing support."
     },
     {
-      position: "SENIOR FULL STACK ENGINEER",
-      company: "MDTS",
-      period: "Aug 2020 - Dec 2021",
+      position: "SENIOR FULL STACK DEVELOPER",
+      company: "FiveRiver Technologies",
+      period: "Jun 2020 - Mar 2023",
       description:
-        "Led the design and development of multi-tenant platforms. Worked on real-time dashboards, authentication flows, and database optimization, ensuring seamless integration between frontend and backend systems."
+        "Architected and developed scalable full-stack web and mobile applications using Laravel, Vue.js, React.js, React Native, and Python, following clean architecture and coding best practices. Designed and implemented RESTful APIs, microservices, and third-party integrations for high performance, security, and maintainability. Built and integrated AI-powered solutions, LLM-based features, chatbots, and automation workflows. Optimized and managed MySQL, PostgreSQL, MongoDB, Redis, and Elasticsearch databases to improve performance and data reliability. Deployed and maintained applications on AWS using Docker, Kubernetes, and CI/CD pipelines. Led cross-functional and remote development teams overseeing system architecture, project planning, code reviews, and end-to-end product delivery."
     },
     {
-      position: "SOFTWARE ENGINEER (FULL STACK)",
-      company: "Dg Optimizer",
-      period: "Apr 2019 - Jul 2020",
+      position: "FULL STACK DEVELOPER",
+      company: "Sky Soft",
+      period: "Aug 2017 - May 2020",
       description:
-        "Developed performance-driven web applications using React and Laravel. Focused on optimizing APIs, improving frontend responsiveness, and collaborating closely with the design team for better user experience."
-    },
-    {
-      position: "JUNIOR FULL STACK DEVELOPER",
-      company: "Elefta Inc",
-      period: "Jan 2017 - Mar 2019",
-      description:
-        "Built and maintained internal tools and APIs using JavaScript, Node.js, and MySQL. Assisted senior developers in creating scalable architectures and learned deployment automation and version control best practices."
+        "Developed and maintained scalable web and mobile applications using Laravel, Vue.js, React.js, and React Native, delivering responsive and high-performance user experiences. Designed and implemented RESTful APIs, backend services, and third-party integrations for secure and efficient system communication. Built and integrated AI/ML-powered features, intelligent automation workflows, and data-driven solutions. Designed, optimized, and managed MySQL, PostgreSQL, and MongoDB databases with a focus on performance, scalability, and data integrity. Deployed and maintained applications using cloud services, Docker, version control, and CI/CD pipelines. Collaborated with stakeholders and development teams on system architecture, project planning, code reviews, testing, deployment, and ongoing support."
     }
-    
-   
-   
-   
   ];
   
 

@@ -243,6 +243,87 @@ export const allProjects: Project[] = [
     link: "https://corporate.target.com/about",
     techStack: "React.js Next.js TypeScript Tailwind CSS Node.js",
     description: "Corporate website showcasing company mission, values, and brand story with engaging visuals, responsive design, and seamless user experience."
+  },
+  {
+    id: 31,
+    title: "Canton Fair",
+    category: "Python",
+    image: "/images/global-united-esales.png",
+    link: "https://www.cantonfair.org.cn/en-US",
+    techStack: "Python Django FastAPI React.js PostgreSQL",
+    description: "Developed a scalable Python-powered platform for Canton Fair with robust backend services, dynamic content management, and a responsive user experience for global trade exhibition services."
+  },
+  {
+    id: 32,
+    title: "New Effect",
+    category: "Modern Stack",
+    image: "/images/target-corporate.jpeg",
+    link: "https://neweffect.co.uk/",
+    techStack: "React.js Next.js TypeScript Python Node.js PostgreSQL",
+    description: "Built the New Effect business intelligence website with custom analytics dashboards, data transformation workflows, automation tools, and a modern responsive interface for enterprise clients."
+  },
+  {
+    id: 33,
+    title: "FakeXpose",
+    category: "Python",
+    image: "/images/5n.png",
+    link: "https://fakexpose.com/",
+    techStack: "Python TensorFlow PyTorch FastAPI MongoDB Deep-Learning",
+    description: "Developed an AI-powered deepfake detection platform that analyzes audio and video to identify whether media is real or fake, with real-time verification, explainability, and confidence scoring."
+  },
+  {
+    id: 25,
+    title: "Shopify E-commerce Store",
+    category: "E-commerce Stores",
+    image: "/images/a-dam.jpeg",
+    link: "https://www.allbirds.com",
+    techStack: "Shopify Liquid HTML CSS JavaScript",
+    description: "Developed a modern Shopify e-commerce store with a responsive design, optimized performance, secure checkout, product management, and mobile-friendly user experience."
+  },
+  {
+    id: 26,
+    title: "Shopify Fitness Store",
+    category: "E-commerce Stores",
+    image: "/images/global-united-esales.png",
+    link: "https://www.gymshark.com",
+    techStack: "Shopify Liquid JavaScript CSS",
+    description: "Built a high-performance Shopify store focused on speed, user experience, and conversion optimization with custom theme enhancements."
+  },
+  {
+    id: 27,
+    title: "Shopify Beauty Store",
+    category: "E-commerce Stores",
+    image: "/images/ormith.jpg",
+    link: "https://kyliecosmetics.com",
+    techStack: "Shopify Liquid HTML CSS JavaScript",
+    description: "Created a premium Shopify storefront with responsive UI, product filtering, payment integration, and optimized shopping experience."
+  },
+  {
+    id: 28,
+    title: "Shopify Lifestyle Store",
+    category: "E-commerce Stores",
+    image: "/images/grandroyale (1).jpg",
+    link: "https://www.beardbrand.com",
+    techStack: "Shopify Liquid JavaScript",
+    description: "Designed and developed a branded Shopify store with custom sections, optimized SEO, and fast page loading."
+  },
+  {
+    id: 29,
+    title: "WooCommerce Coffee Store",
+    category: "E-commerce Stores",
+    image: "/images/screencapture-theglag-2025-06-27-01_20_19.png",
+    link: "https://www.bluestarcoffee.eu",
+    techStack: "WordPress WooCommerce PHP MySQL",
+    description: "Developed a WooCommerce-based online store with secure checkout, product catalog, and responsive design."
+  },
+  {
+    id: 30,
+    title: "WooCommerce Meat Store",
+    category: "E-commerce Stores",
+    image: "/images/sixn.png",
+    link: "https://porterandyork.com",
+    techStack: "WordPress WooCommerce PHP MySQL",
+    description: "Built a scalable WooCommerce e-commerce platform with custom functionality, payment integration, and performance optimization."
   }
   // {
   //   id: 17,
@@ -312,4 +393,31 @@ export const allProjects: Project[] = [
 
 ];
 
-export const featuredProjects = allProjects.slice(0, 6);
+export const featuredProjects = [
+  allProjects[0],
+  allProjects[1],
+  allProjects[2],
+  allProjects[3],
+  allProjects.find((project) => project.id === 25)!,
+  allProjects.find((project) => project.id === 26)!,
+].filter(Boolean);
+
+export const ecommerceProjects = allProjects.filter(
+  (project) => project.category === 'E-commerce Stores'
+);
+
+export const nonEcommerceProjects = allProjects.filter(
+  (project) => project.category !== 'E-commerce Stores'
+);
+
+export const projectCategories = Array.from(
+  new Set(allProjects.map((project) => project.category).filter(Boolean))
+) as string[];
+
+export const projectsByCategory = projectCategories.reduce<Record<string, Project[]>>(
+  (acc, category) => {
+    acc[category] = allProjects.filter((project) => project.category === category);
+    return acc;
+  },
+  {}
+);

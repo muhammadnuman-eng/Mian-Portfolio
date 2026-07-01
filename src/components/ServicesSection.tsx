@@ -1,5 +1,35 @@
 import { useEffect, useRef, useState } from 'react';
 
+const StatHexagon = ({
+  number,
+  lines,
+  large = false,
+  delay = 0,
+}: {
+  number: string;
+  lines: [string, string];
+  large?: boolean;
+  delay?: number;
+}) => (
+  <div
+    className={`hexagon stat-hexagon-pro flex flex-col items-center justify-center text-center px-2 ${
+      large
+        ? 'w-32 h-32 sm:w-36 sm:h-36 lg:w-40 lg:h-40'
+        : 'w-28 h-28 sm:w-32 sm:h-32 lg:w-36 lg:h-36'
+    }`}
+    style={{ animationDelay: `${delay}s` }}
+  >
+    <span className="text-xl sm:text-2xl lg:text-3xl font-black text-white leading-none mb-1.5 drop-shadow-sm">
+      {number}
+    </span>
+    <span className="text-[9px] sm:text-[10px] lg:text-xs font-semibold text-white/90 leading-tight uppercase tracking-wider">
+      {lines[0]}
+      <br />
+      {lines[1]}
+    </span>
+  </div>
+);
+
 const ServicesSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
@@ -9,13 +39,13 @@ const ServicesSection = () => {
     'WEBFLOW',
     'DESIGN',
     'DEVOPS',
-    'MAINTENANCE & DEPLOYMENT'
+    'MAINTENANCE & DEPLOYMENT',
   ];
 
   const stats = [
-    { number: '9+', label: 'YEARS OF EXPERIENCE' },
-    { number: '300+', label: 'DELIVERED PROJECTS' },
-    { number: '200+', label: 'SATISFIED CLIENTS' }
+    { number: '10+', lines: ['Years of', 'Experience'] as [string, string] },
+    { number: '300+', lines: ['Delivered', 'Projects'] as [string, string] },
+    { number: '200+', lines: ['Satisfied', 'Clients'] as [string, string] },
   ];
 
   useEffect(() => {
@@ -37,12 +67,14 @@ const ServicesSection = () => {
 
   return (
     <section id="services" ref={sectionRef} className="py-0 bg-background relative overflow-hidden px-4 sm:px-6 lg:px-8">
-      <div className={`fade-in-up ${isVisible ? 'visible' : ''} relative max-w-7xl w-full mx-auto bg-card rounded-lg m-4 p-6 lg:p-8 xl:p-10 shadow-xl border-2 border-border overflow-hidden`} style={{ animationDelay: "0.2s" }}>
+      <div
+        className={`fade-in-up ${isVisible ? 'visible' : ''} relative max-w-7xl w-full mx-auto bg-card rounded-lg m-4 p-6 lg:p-8 xl:p-10 shadow-xl border-2 border-border overflow-hidden`}
+        style={{ animationDelay: '0.2s' }}
+      >
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center">
-          {/* Left Content */}
           <div className={`space-y-6 fade-in-up ${isVisible ? 'visible' : ''}`}>
             <div className="flex items-center space-x-3 mb-6">
-              <div className="w-6 h-6 hexagon bg-teal animate-scale-in"></div>
+              <div className="w-6 h-6 hexagon bg-teal animate-scale-in" />
               <h2 className="text-lg font-bold text-foreground">My Services</h2>
             </div>
 
@@ -63,69 +95,21 @@ const ServicesSection = () => {
                     <span className="text-foreground text-sm font-medium">
                       {String(index + 1).padStart(2, '0')}.
                     </span>
-                    <span className="text-foreground text-sm font-medium">
-                      {service}
-                    </span>
+                    <span className="text-foreground text-sm font-medium">{service}</span>
                   </div>
                 ))}
               </div>
             </div>
           </div>
 
-          {/* Right Content - Stats in Triangle Formation */}
-          <div className={`fade-in-up ${isVisible ? 'visible' : ''}`} style={{animationDelay: '0.3s'}}>
-            <div className="flex flex-col items-center space-y-6">
-              {/* Top Row - 1 Hexagon (Experience) */}
-              <div
-                className={`text-center fade-in-up hover-scale ${isVisible ? 'visible' : ''}`}
-                style={{ animationDelay: '0.4s' }}
-              >
-                <div className="relative inline-block mb-3">
-                  <div className="w-20 h-20 sm:w-24 sm:h-24 hexagon bg-teal flex flex-col items-center justify-center hover:scale-110 transition-transform duration-300 animate-pulse">
-                    <span className="text-lg sm:text-xl font-black text-foreground mb-1">
-                      {stats[0].number}
-                    </span>
-                    <span className="text-xs font-bold text-foreground text-center leading-tight">
-                    EXPERIENCE
-                      <br/>
-                      OF  YEARS 
-                    </span>
-                  </div>
-                </div>
-              </div>
-              
-              {/* Bottom Row - 2 Hexagons */}
-              <div className="flex space-x-4 sm:space-x-6 lg:space-x-8">
-                <div
-                  className={`text-center fade-in-up hover-scale ${isVisible ? 'visible' : ''}`}
-                  style={{ animationDelay: '0.5s' }}
-                >
-                  <div className="relative inline-block mb-3">
-                    <div className="w-20 h-20 sm:w-24 sm:h-24 hexagon bg-teal flex flex-col items-center justify-center hover:scale-110 transition-transform duration-300 animate-pulse">
-                      <span className="text-lg sm:text-xl font-black text-foreground mb-1">
-                        {stats[1].number}
-                      </span>
-                      <span className="text-xs font-bold text-foreground text-center leading-tight">
-                        DELIVERED<br/>PROJECTS
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                
-                <div
-                  className={`text-center fade-in-up hover-scale ${isVisible ? 'visible' : ''}`}
-                  style={{ animationDelay: '0.6s' }}
-                >
-                  <div className="relative inline-block mb-3">
-                    <div className="w-20 h-20 sm:w-24 sm:h-24 hexagon bg-teal flex flex-col items-center justify-center hover:scale-110 transition-transform duration-300 animate-pulse">
-                      <span className="text-lg sm:text-xl font-black text-foreground mb-1">
-                        {stats[2].number}
-                      </span>
-                      <span className="text-xs font-bold text-foreground text-center leading-tight">
-                        SATISFIED<br/>CLIENTS
-                      </span>
-                    </div>
-                  </div>
+          <div className={`fade-in-up ${isVisible ? 'visible' : ''}`} style={{ animationDelay: '0.3s' }}>
+            <div className="flex items-center justify-center w-full min-h-[300px] sm:min-h-[340px] lg:min-h-[380px] rounded-xl border border-border/60 bg-muted/10 p-6 sm:p-8">
+              <div className="flex flex-col items-center gap-5 sm:gap-6">
+                <StatHexagon number={stats[0].number} lines={stats[0].lines} large delay={0} />
+
+                <div className="flex items-center justify-center gap-5 sm:gap-8 lg:gap-10">
+                  <StatHexagon number={stats[1].number} lines={stats[1].lines} delay={2.2} />
+                  <StatHexagon number={stats[2].number} lines={stats[2].lines} delay={4.4} />
                 </div>
               </div>
             </div>

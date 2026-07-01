@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
-import { ExternalLink, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { featuredProjects } from '@/data/projects';
 import { Button } from '@/components/ui/button';
+import ProjectCard from '@/components/ProjectCard';
 import { useNavigate } from 'react-router-dom';
 
 const WorksSection = () => {
@@ -32,7 +33,6 @@ const WorksSection = () => {
 
   return (
     <section id="works" ref={sectionRef} className="py-0 bg-background relative overflow-hidden px-4 sm:px-6 lg:px-8">
-      {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-5 sm:top-10 right-4 sm:right-10 lg:right-20 w-20 h-20 sm:w-24 sm:h-24 lg:w-32 lg:h-32 xl:w-40 xl:h-40 hexagon border border-teal/20"></div>
         <div className="absolute bottom-5 sm:bottom-10 left-4 sm:left-10 lg:left-20 w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 xl:w-32 xl:h-32 hexagon border border-teal/20"></div>
@@ -40,7 +40,6 @@ const WorksSection = () => {
       </div>
 
       <div className={`fade-in-up ${isVisible ? 'visible' : ''} relative max-w-7xl w-full mx-auto bg-card rounded-lg m-4 p-6 lg:p-8 xl:p-10 shadow-xl border-2 border-border overflow-hidden`} style={{ animationDelay: "0.2s" }}>
-          {/* Enhanced Header */}
         <div className={`mb-8 sm:mb-12 lg:mb-16 fade-in-up ${isVisible ? 'visible' : ''}`}>
           <div className="text-center space-y-4">
             <div className="flex items-center justify-center space-x-4 mb-6">
@@ -53,60 +52,18 @@ const WorksSection = () => {
           </div>
         </div>
 
-        {/* Enhanced Projects Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-8 sm:mb-12 lg:mb-16">
           {featuredProjects.map((project, index) => (
-            <div
-              key={project.id}
-              className={`group bg-card rounded-2xl overflow-hidden hover:scale-105 hover:-translate-y-3 transition-all duration-700 cursor-pointer fade-in-up ${isVisible ? 'visible' : ''
-                } shadow-xl hover:shadow-2xl border border-border hover:border-teal/50`}
-              style={{ animationDelay: `${index * 0.1}s` }}
-              onClick={() => window.open(project.link, '_blank')}
-            >
-              {/* Project Image */}
-              <div className="aspect-[4/3] bg-gradient-to-br from-muted to-card overflow-hidden relative">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-muted/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500">
-                  <div className="bg-teal/90 backdrop-blur-sm rounded-full p-4 transform scale-75 group-hover:scale-100 transition-transform duration-500">
-                    <ExternalLink className="w-6 h-6 text-white" />
-                  </div>
-                </div>
-              </div>
-
-              {/* Project Info */}
-              <div className="p-4 sm:p-6 lg:p-8 space-y-4 sm:space-y-5">
-                {/* Project Title - Large and Bold */}
-                <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-foreground group-hover:text-teal transition-colors leading-tight">
-                  {project.title}
-                </h3>
-
-                {/* Technologies */}
-                <div className="flex flex-wrap items-center gap-2">
-                  {project.techStack.split(' ').map((tech, idx) => (
-                    <span
-                      key={idx}
-                      className="px-3 py-1 bg-muted border border-teal/40 text-teal text-sm font-medium"
-                      style={{ borderRadius: '10px' }}
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-                {/* Project Description */}
-                <p className="text-foreground/70 text-base leading-relaxed">
-                  {project.description || `A modern ${project.category} project built with cutting-edge technology and industry best practices.`}
-                </p>
-              </div>
-            </div>
+            <ProjectCard
+              key={`${project.id}-${project.title}`}
+              project={project}
+              index={index}
+              isVisible={isVisible}
+              variant="works"
+            />
           ))}
         </div>
 
-        {/* Enhanced View More Projects Button */}
         <div className={`text-center fade-in-up ${isVisible ? 'visible' : ''}`} style={{ animationDelay: '0.8s' }}>
           <Button
             onClick={handleViewMore}

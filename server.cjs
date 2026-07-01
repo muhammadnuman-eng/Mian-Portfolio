@@ -27,7 +27,7 @@ app.use(express.json());
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: process.env.EMAIL_USER || 'mnumanakrambhatti@gmail.com',
+    user: process.env.EMAIL_USER || 'numandev304@gmail.com',
     pass: process.env.EMAIL_PASS || 'your-app-password-here'
   },
   tls: {
@@ -73,8 +73,8 @@ app.post('/api/send-email', async (req, res) => {
 
     // Email content
     const mailOptions = {
-      from: process.env.EMAIL_USER || 'mnumanakrambhatti@gmail.com',
-      to: 'mnumanakrambhatti@gmail.com',
+      from: process.env.EMAIL_USER || 'numandev304@gmail.com',
+      to: process.env.EMAIL_USER || 'numandev304@gmail.com',
       subject: `Portfolio Contact: ${subject || 'New Message from ${name}'}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -169,6 +169,6 @@ app.listen(PORT, () => {
   console.log(`📧 Email endpoint: http://localhost:${PORT}/api/send-email`);
   console.log(`🌐 CORS: All origins allowed (*)`);
   console.log(`📁 Environment: ${process.env.NODE_ENV || 'development'}`);
-  console.log(`📧 Email User: ${process.env.EMAIL_USER || 'mnumanakrambhatti@gmail.com'}`);
+  console.log(`📧 Email User: ${process.env.EMAIL_USER || 'numandev304@gmail.com'}`);
   console.log(`🔑 Email Pass: ${process.env.EMAIL_PASS ? '✅ Configured' : '❌ Not configured'}`);
 });
